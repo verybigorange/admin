@@ -1,5 +1,5 @@
 <template>
-      <el-row class="tac">
+      <el-row class="tac" style="width:200px;">
              <el-col :span="24">
     <el-menu
       default-active="2"

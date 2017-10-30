@@ -4,10 +4,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import ElementUI from 'element-ui';
+import 'assets/css/common.css'
+import 'assets/css/normalize.css';
 import 'babel-polyfill';
 Vue.config.productionTip = false
 
-import 'element-ui/lib/theme-default/index.css';
+import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(ElementUI);
 /* eslint-disable no-new */
