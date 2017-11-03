@@ -21,6 +21,9 @@
 
   <script>
     export default {
+      mounted(){
+        console.log(this.$route.query.type)
+      },
       data() {
         return {
           tableData: [{

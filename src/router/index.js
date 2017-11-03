@@ -23,7 +23,7 @@ export default new Router({
           component:news
         },
         {
-          path:"works/:type",
+          path:"works",
           component:works
         }
       ]
