@@ -1,49 +1,67 @@
 <template>
-    <el-table
+  <div>
+     <el-table
       :data="tableData"
       style="width: 100%">
       <el-table-column
         prop="date"
-        label="日期"
+        label="序号"
         width="180">
       </el-table-column>
       <el-table-column
         prop="name"
-        label="姓名"
+        label="作品名称"
         width="180">
       </el-table-column>
       <el-table-column
         prop="address"
-        label="地址">
+        label="作品类型">
+      </el-table-column>
+      <el-table-column
+        prop="handle"
+        label="操作">
+        <template slot-scope="scope">
+            <el-button type="danger" size="mini">删除</el-button>
+            <el-button type="info" size="mini">查看详情</el-button>
+        </template>
       </el-table-column>
     </el-table>
+  </div>
+   
   </template>
 
   <script>
-    export default {
-      mounted(){
-        console.log(this.$route.query.type)
-      },
-      data() {
-        return {
-          tableData: [{
-            date: '2016-05-02',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1518 弄'
-          }, {
-            date: '2016-05-04',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1517 弄'
-          }, {
-            date: '2016-05-01',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1519 弄'
-          }, {
-            date: '2016-05-03',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1516 弄'
-          }]
-        }
-      }
+export default {
+  computed: {
+    type() {
+      return this.$route.query.type;
     }
-  </script>
+  },
+  data() {
+    return {
+      tableData: [
+        {
+          date: "1",
+          name: "老虎下山",
+          address: "山水"
+        },
+        {
+          date: "2",
+          name: "老虎下山",
+          address: "人物"
+        },
+        {
+          date: "3",
+          name: "老虎下山",
+          address: "水墨"
+        },
+        {
+          date: "4",
+          name: "老虎下山",
+          address: "临摹"
+        }
+      ]
+    };
+  }
+};
+</script>
