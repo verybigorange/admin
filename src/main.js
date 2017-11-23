@@ -11,6 +11,12 @@ Vue.config.productionTip = false
 
 import 'element-ui/lib/theme-chalk/index.css';
 
+// 引入富文本编辑器
+import '../static/UE/ueditor.config.js'
+import '../static/UE/ueditor.all.min.js'
+import '../static/UE/lang/zh-cn/zh-cn.js'
+import '../static/UE/ueditor.parse.min.js'
+
 Vue.use(ElementUI);
 /* eslint-disable no-new */
 new Vue({
