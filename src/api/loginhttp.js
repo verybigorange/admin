@@ -3,18 +3,14 @@ import { Message } from 'element-ui'
 import md5 from "md5"
 import router from "@/router/index.js"
 
-// 这里先写死，账户是admin，密码是111111
-export default function (params) {
-
-    if (params.username == md5("admin") && params.password == md5("111111")) {
-    
+export default async function (params) {
+    let {data} = await http.post('/api/users/login',params);
+    if (data == '1') {
         sessionStorage.setItem("login",md5("access"));
-
         Message({
             message: "登录成功",
             type: 'success'
         })
-        
         router.push("/admin/home")
     } else {
         Message.error({
