@@ -15,6 +15,14 @@ const adminRouter = [
         admin: true
       },
       children: [
+        //修改密码
+        {
+          path: "changepsd",
+          component: resolve => require(['admin/common/changePsd.vue'], resolve),
+          meta: {
+            admin: true
+          },
+        },
         // 首页
         {
           path: "home",
