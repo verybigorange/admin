@@ -5,10 +5,6 @@
                   class="el-menu-vertical-demo"
                   :router=true
                   >
-                  <el-menu-item index="home">
-                    <!-- <i class="el-icon-setting"></i> -->
-                    <span slot="title">首页管理</span>
-                  </el-menu-item>
                   <el-menu-item index="news">
                     <!-- <i class="el-icon-menu"></i> -->
                     <span slot="title">资讯管理</span>
