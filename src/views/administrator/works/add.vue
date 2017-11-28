@@ -69,7 +69,7 @@
 
 <script>
 
-import { worksAdd } from 'api/works';
+import { worksAdd,delete_pic } from 'api/works';
 
 export default {
   data() {
@@ -97,21 +97,29 @@ export default {
       radio: "0", //单选
       count: "",
       url:"", //作品地址，
-      title:""
+      title:"",
+      pic_name:"", //图片名称
     };
   },
   methods: {
     handleSuccess(data) {
         this.url = data;
+        this.pic_name = data.replace('/api/img/','');
     },
-    handleRemove() {},
+    handleRemove() {
+        //删除图片
+        delete_pic({pic_name:this.pic_name});
+        this.url = "";
+        this.pic_name = "";
+    },
     submit(){
         worksAdd({
             type:this.value,
             url:this.url,
             title:this.title,
             show:this.radio,
-            count:this.count
+            count:this.count,
+            pic_name:this.pic_name
         })
     }
   }

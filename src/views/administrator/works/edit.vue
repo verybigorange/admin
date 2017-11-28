@@ -69,7 +69,7 @@
 
 <script>
 
-import { work_select_id,work_edit } from 'api/works';
+import { work_select_id,work_edit,delete_pic } from 'api/works';
 
 export default {
   async mounted(){
@@ -78,12 +78,13 @@ export default {
      let res = await work_select_id({id:this.work_id});
         
     //回显
-     this.fileList.splice(0,1,{url:res.pic_url});
+     if(res.pic_url)  this.fileList.splice(0,1,{url:res.pic_url});  //如果存在图片地址才回显
      this.value = res.work_type;
      this.radio = res.home_show;
      this.count = res.view_count;
      this.title = res.work_title;
      this.url = res.pic_url;
+     this.pic_name = res.pic_name;
    
   },
   data() {
@@ -112,7 +113,8 @@ export default {
       radio: "否", //单选
       count: "",
       url:"", //作品地址，
-      title:""
+      title:"",
+      pic_name:""
     };
   },
   methods: {
@@ -120,7 +122,12 @@ export default {
     handleSuccess(data) {
         this.url = data;
     },
-    handleRemove() {},
+    handleRemove() {
+         //删除图片
+        delete_pic({pic_name:this.pic_name,id:this.work_id});
+        this.url = "";
+        this.pic_name = "";
+    },
     submit(){
        work_edit({
             id:this.work_id,
@@ -128,7 +135,8 @@ export default {
             url:this.url,
             title:this.title,
             show:this.radio,
-            count:this.count
+            count:this.count,
+            pic_name:this.pic_name
         });
     }
   }

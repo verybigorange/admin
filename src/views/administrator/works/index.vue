@@ -33,9 +33,12 @@
       <el-table-column
         width="250"
         prop="handle"
-        label="操作">
+        label="操作"
+        type="index"
+        :index="index"
+      >
         <template slot-scope="scope">
-            <el-button type="danger" size="mini">删除</el-button>
+            <el-button type="danger" size="mini" @click="handleDelete(scope.row.work_id,scope.$index)">删除</el-button>
             <el-button type="info" size="mini" @click="handleEdit(scope.row.work_id)">编辑</el-button>
             <el-button type="success" size="mini">详情</el-button>
         </template>
@@ -54,7 +57,7 @@
   </template>
 
   <script>
-import { work_all } from 'api/works';
+import { work_all,delete_work } from 'api/works';
 
 export default {
   computed: {
@@ -81,10 +84,21 @@ export default {
     // 作品编辑
     handleEdit(id){
       this.$router.push("/admin/worksEdit?id="+id);
+    },
+    // 作品删除
+    async handleDelete(id,index){
+      // 删除后返回新数据
+      let res = await delete_work({id});
+      if(res == 1){
+         this.total--;
+         this.tableData.splice(index,1);
+      }
+     
     }
   },
   data() {
     return {
+      index:0,//表格索引
       tableData: [], //表格数据
       limit:5,  //每页显示数量
       total:0,  //总数

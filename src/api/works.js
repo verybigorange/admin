@@ -48,3 +48,36 @@ export async function work_edit(params) {
     }
 }
 
+
+//删除图片
+export async function delete_pic(params) {
+    let { data } = await http.post('/api/works/delete_pic',params);
+    if (data == '1') {
+        Message({
+            message: "删除成功",
+            type: 'success'
+        })
+    } else {
+        Message.error({
+            message: "删除失败！"
+        })
+    }
+}
+
+//删除作品
+export async function delete_work(params) {
+    let { data } = await http.post('/api/works/delete',params);
+    if (data == 1) {
+        Message({
+            message: "删除成功",
+            type: 'success'
+        })
+        return 1;
+    } else {
+        Message.error({
+            message: "删除失败！"
+        })
+        return 0;
+    }
+    
+}
