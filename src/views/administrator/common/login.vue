@@ -28,7 +28,7 @@ export default {
   },
   methods:{
     submit(){
-      loginHttp({'username':md5(this.username),'password':md5(this.password)});
+      loginHttp({'username':this.username,'password':md5(this.password)});
     }
   }
 };

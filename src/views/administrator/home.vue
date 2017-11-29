@@ -1,17 +1,19 @@
 <template>
-  <div>
-      111
-  </div>
+    <span class="tip">
+         管理员，欢迎来到后台管理系统!
+    </span>
 </template>
 
 <script>
 export default {
-  mounted(){
-    console.log(this.$route.params.type)
-  }
+  
 }
 </script>
 
 <style scoped>
-
+.tip{
+    font-size: 28px;
+    color:#999;
+}
 </style>
+

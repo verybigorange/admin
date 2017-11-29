@@ -8,7 +8,7 @@
                   管理员<i class="el-icon-arrow-down el-icon--right"></i>
                 </span>
                 <el-dropdown-menu slot="dropdown" >
-                  <el-dropdown-item >修改密码</el-dropdown-item>
+                  <el-dropdown-item command='changePsd'>修改密码</el-dropdown-item>
                   <el-dropdown-item command='quit'>退出系统</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
@@ -44,6 +44,10 @@ export default {
         if(command === 'quit'){
             sessionStorage.removeItem('login')
             this.$router.push('/login');
+        }
+        // 修改密码
+        if(command === 'changePsd'){
+            this.$router.push('/admin/changePsd');
         }
     }
   }

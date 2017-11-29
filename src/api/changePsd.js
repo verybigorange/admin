@@ -1,20 +1,18 @@
 import http from "./http.js"
 import { Message } from 'element-ui'
-import md5 from "md5"
 import router from "@/router/index.js"
 
 export default async function (params) {
-    let {data} = await http.post('/users/login',params);
+    let {data} = await http.post('/users/change/',params);
     if (data == '1') {
-        sessionStorage.setItem("login",md5("access"));
         Message({
-            message: "登录成功",
+            message: "修改成功",
             type: 'success'
         })
-        router.push("/admin/home")
+        router.go(-1)
     } else {
         Message.error({
-            message: "账号或者密码错误,请重新输入！"
+            message: "输入密码错误,请重新输入！"
         })
     }
 
