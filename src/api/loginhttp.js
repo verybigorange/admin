@@ -4,7 +4,7 @@ import md5 from "md5"
 import router from "@/router/index.js"
 
 export default async function (params) {
-    let {data} = await http.post('/api/users/login',params);
+    let {data} = await http.post('/users/login',params);
     if (data == '1') {
         sessionStorage.setItem("login",md5("access"));
         Message({

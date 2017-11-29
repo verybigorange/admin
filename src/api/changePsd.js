@@ -3,7 +3,7 @@ import { Message } from 'element-ui'
 import router from "@/router/index.js"
 
 export default async function (params) {
-    let {data} = await http.post('/api/users/change/',params);
+    let {data} = await http.post('/users/change/',params);
     if (data == '1') {
         Message({
             message: "修改成功",
