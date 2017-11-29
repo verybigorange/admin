@@ -71,6 +71,14 @@ const adminRouter = [
           admin: true
         },
       },
+      //作品详情页
+      {
+        path: "worksDetail",
+        component: resolve => require(['admin/works/detail.vue'], resolve),
+        meta: {
+          admin: true
+        },
+      },
       // 相册页
       {
         path: "photo",

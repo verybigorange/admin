@@ -29,6 +29,9 @@
       <el-table-column
         prop="home_show"
         label="首页展示">
+        <template slot-scope="scope">
+          <span>{{(scope.row.home_show=='1')?'是':'否'}}</span>
+       </template>
       </el-table-column>
       <el-table-column
         width="250"
@@ -40,7 +43,7 @@
         <template slot-scope="scope">
             <el-button type="danger" size="mini" @click="handleDelete(scope.row.work_id,scope.$index)">删除</el-button>
             <el-button type="info" size="mini" @click="handleEdit(scope.row.work_id)">编辑</el-button>
-            <el-button type="success" size="mini">详情</el-button>
+            <el-button type="success" size="mini" @click="handleDetail(scope.row.work_id)">详情</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -93,7 +96,10 @@ export default {
          this.total--;
          this.tableData.splice(index,1);
       }
-     
+    },
+    //查看作品详情
+    handleDetail(id){
+       this.$router.push("/admin/worksDetail");
     }
   },
   data() {
