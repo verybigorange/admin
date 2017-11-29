@@ -46,8 +46,8 @@
             <div class="item">
                 <p>首页展示:</p>
                 <div class="content">
-                    <el-radio v-model="radio" label="否">否</el-radio>
-                <el-radio v-model="radio" label="是">是</el-radio>
+                    <el-radio v-model="radio" label="0">否</el-radio>
+                <el-radio v-model="radio" label="1">是</el-radio>
                 </div>
             </div>  
 
