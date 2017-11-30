@@ -99,7 +99,7 @@ export default {
     },
     //查看作品详情
     handleDetail(id){
-       this.$router.push("/admin/worksDetail");
+       this.$router.push("/admin/worksDetail?id="+id);
     }
   },
   data() {
