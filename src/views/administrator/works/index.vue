@@ -1,9 +1,19 @@
 <template>
   <div class="clearfix">
+    作品类型：
+     <el-select v-model="type" placeholder="请选择"  @change="handleChange">
+        <el-option
+          v-for="item in options"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+         >
+        </el-option>
+     </el-select>
     <el-button type="deflaut" class="pull-right" @click="addWork">添加作品</el-button>
      <el-table
       :data="tableData"
-      style="width: 100%">
+      style="width: 100%;margin-top:30px;">
       <el-table-column
         prop="work_title"
         label="名称"
@@ -60,14 +70,9 @@
   </template>
 
   <script>
-import { work_all,delete_work } from 'api/works';
+import { work_all,delete_work,work_type } from 'api/works';
 
 export default {
-  computed: {
-    type() {
-      return this.$route.query.type;
-    }
-  },
   async mounted(){
     // 首次请求数据
     let { count,list } = await work_all({limit:this.limit,currentPage:this.currentPage});
@@ -100,6 +105,12 @@ export default {
     //查看作品详情
     handleDetail(id){
        this.$router.push("/admin/worksDetail?id="+id);
+    },
+    //选择查看的作品类型
+    async handleChange(){
+      let { count,list } = await work_type({limit:this.limit,currentPage:this.currentPage,type:this.type});
+      this.total = count;
+      this.tableData = list;
     }
   },
   data() {
@@ -108,7 +119,24 @@ export default {
       tableData: [], //表格数据
       limit:5,  //每页显示数量
       total:0,  //总数
-      currentPage:1 //当前页
+      currentPage:1, //当前页,
+      options: [{     //下拉选项
+        value: '全部',
+        label: '全部'
+      }, {
+        value: '山水',
+        label: '山水'
+      }, {
+        value: '人物',
+        label: '人物'
+      }, {
+        value: '花鸟',
+        label: '花鸟'
+      }, {
+        value: '临摹',
+        label: '临摹'
+      }],
+        type: '全部'
     };
   }
 };

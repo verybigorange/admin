@@ -24,6 +24,12 @@ export async function work_all(params) {
     return data;
 }
 
+//按类型查询作品
+export async function work_type(params) {
+    let { data } = await http.post('/works/type',params);
+    return data;
+}
+
 
 // 按id查询作品
 export async function work_select_id(params) {
