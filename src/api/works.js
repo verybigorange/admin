@@ -18,15 +18,9 @@ export async function worksAdd(params) {
 
 }
 
-//查询全部作品
-export async function work_all(params) {
+//查询作品
+export async function work_select(params) {
     let { data } = await http.post('/works',params);
-    return data;
-}
-
-//按类型查询作品
-export async function work_type(params) {
-    let { data } = await http.post('/works/type',params);
     return data;
 }
 

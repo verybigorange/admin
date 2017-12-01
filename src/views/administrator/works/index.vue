@@ -70,12 +70,13 @@
   </template>
 
   <script>
-import { work_all,delete_work,work_type } from 'api/works';
+import { work_select,delete_work } from 'api/works';
+import { comment_delete_all } from 'api/comment';
 
 export default {
   async mounted(){
     // 首次请求数据
-    let { count,list } = await work_all({limit:this.limit,currentPage:this.currentPage});
+    let { count,list } = await work_select({limit:this.limit,currentPage:this.currentPage});
     this.total = count;
     this.tableData = list;
   },
@@ -86,7 +87,7 @@ export default {
     // 切换分页
     async pageChange(size){
       this.currentPage = size;
-      let { list } = await work_all({limit:this.limit,currentPage:this.currentPage});
+      let { list } = await work_select({limit:this.limit,currentPage:this.currentPage});
       this.tableData = list;
     },
     // 作品编辑
@@ -100,6 +101,8 @@ export default {
       if(res == 1){
          this.total--;
          this.tableData.splice(index,1);
+         //删除作品并删除相关所有评论
+         comment_delete_all({work_id:id});
       }
     },
     //查看作品详情
@@ -108,7 +111,7 @@ export default {
     },
     //选择查看的作品类型
     async handleChange(){
-      let { count,list } = await work_type({limit:this.limit,currentPage:this.currentPage,type:this.type});
+      let { count,list } = await work_select({limit:this.limit,currentPage:this.currentPage,type:this.type});
       this.total = count;
       this.tableData = list;
     }

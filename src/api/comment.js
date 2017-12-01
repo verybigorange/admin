@@ -24,3 +24,13 @@ export async function comment_delete(params) {
         return '0'
     }
 }
+
+//删除作品的全部评论
+export async function comment_delete_all(params) {
+    let { data } = await http.post('/comment/deleteAll',params);
+    if (data == '1') {
+        return '1'
+    } else {
+        return '0'
+    }
+}
