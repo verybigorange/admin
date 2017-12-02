@@ -82,7 +82,23 @@ const adminRouter = [
       // 相册页
       {
         path: "photo",
-        component: resolve => require(['admin/photo.vue'], resolve),
+        component: resolve => require(['admin/photo/index.vue'], resolve),
+        meta: {
+          admin: true
+        },
+      },
+      // 相册页
+      {
+        path: "photoAdd",
+        component: resolve => require(['admin/photo/add.vue'], resolve),
+        meta: {
+          admin: true
+        },
+      },
+      //相册编辑页
+      {
+        path: "photoEdit",
+        component: resolve => require(['admin/photo/edit.vue'], resolve),
         meta: {
           admin: true
         },
