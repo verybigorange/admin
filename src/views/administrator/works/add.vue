@@ -46,8 +46,8 @@
             <div class="item">
                 <p>首页展示:</p>
                 <div class="content">
-                    <el-radio v-model="radio" label="否">否</el-radio>
-                <el-radio v-model="radio" label="是">是</el-radio>
+                    <el-radio v-model="radio" label="0">否</el-radio>
+                <el-radio v-model="radio" label="1">是</el-radio>
                 </div>
             </div>  
 
@@ -104,7 +104,7 @@ export default {
   methods: {
     handleSuccess(data) {
         this.url = data;
-        this.pic_name = data.replace('/api/img/','');
+        this.pic_name = data.replace('/api/static/img/','');
     },
     handleRemove() {
         //删除图片

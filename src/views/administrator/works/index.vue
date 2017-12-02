@@ -1,9 +1,19 @@
 <template>
   <div class="clearfix">
+    作品类型：
+     <el-select v-model="type" placeholder="请选择"  @change="handleChange">
+        <el-option
+          v-for="item in options"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+         >
+        </el-option>
+     </el-select>
     <el-button type="deflaut" class="pull-right" @click="addWork">添加作品</el-button>
      <el-table
       :data="tableData"
-      style="width: 100%">
+      style="width: 100%;margin-top:30px;">
       <el-table-column
         prop="work_title"
         label="名称"
@@ -29,6 +39,9 @@
       <el-table-column
         prop="home_show"
         label="首页展示">
+        <template slot-scope="scope">
+          <span>{{(scope.row.home_show=='1')?'是':'否'}}</span>
+       </template>
       </el-table-column>
       <el-table-column
         width="250"
@@ -38,9 +51,9 @@
         :index="index"
       >
         <template slot-scope="scope">
-            <el-button type="danger" size="mini" @click="handleDelete(scope.row.work_id,scope.$index)">删除</el-button>
+            <el-button type="danger" size="mini" @click="handleDelete(scope.row.work_id,scope.row.pic_name,scope.$index)">删除</el-button>
             <el-button type="info" size="mini" @click="handleEdit(scope.row.work_id)">编辑</el-button>
-            <el-button type="success" size="mini">详情</el-button>
+            <el-button type="success" size="mini" @click="handleDetail(scope.row.work_id)">详情</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -57,17 +70,13 @@
   </template>
 
   <script>
-import { work_all,delete_work } from 'api/works';
+import { work_select,delete_work } from 'api/works';
+import { comment_delete_all } from 'api/comment';
 
 export default {
-  computed: {
-    type() {
-      return this.$route.query.type;
-    }
-  },
   async mounted(){
     // 首次请求数据
-    let { count,list } = await work_all({limit:this.limit,currentPage:this.currentPage});
+    let { count,list } = await work_select({limit:this.limit,currentPage:this.currentPage});
     this.total = count;
     this.tableData = list;
   },
@@ -78,7 +87,7 @@ export default {
     // 切换分页
     async pageChange(size){
       this.currentPage = size;
-      let { list } = await work_all({limit:this.limit,currentPage:this.currentPage});
+      let { list } = await work_select({limit:this.limit,currentPage:this.currentPage});
       this.tableData = list;
     },
     // 作品编辑
@@ -86,14 +95,25 @@ export default {
       this.$router.push("/admin/worksEdit?id="+id);
     },
     // 作品删除
-    async handleDelete(id,index){
+    async handleDelete(id,pic_name,index){
       // 删除后返回新数据
-      let res = await delete_work({id});
+      let res = await delete_work({id,pic_name});
       if(res == 1){
          this.total--;
          this.tableData.splice(index,1);
+         //删除作品并删除相关所有评论
+         comment_delete_all({work_id:id});
       }
-     
+    },
+    //查看作品详情
+    handleDetail(id){
+       this.$router.push("/admin/worksDetail?id="+id);
+    },
+    //选择查看的作品类型
+    async handleChange(){
+      let { count,list } = await work_select({limit:this.limit,currentPage:this.currentPage,type:this.type});
+      this.total = count;
+      this.tableData = list;
     }
   },
   data() {
@@ -102,7 +122,24 @@ export default {
       tableData: [], //表格数据
       limit:5,  //每页显示数量
       total:0,  //总数
-      currentPage:1 //当前页
+      currentPage:1, //当前页,
+      options: [{     //下拉选项
+        value: '全部',
+        label: '全部'
+      }, {
+        value: '山水',
+        label: '山水'
+      }, {
+        value: '人物',
+        label: '人物'
+      }, {
+        value: '花鸟',
+        label: '花鸟'
+      }, {
+        value: '临摹',
+        label: '临摹'
+      }],
+        type: '全部'
     };
   }
 };
