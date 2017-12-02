@@ -104,7 +104,7 @@ export default {
   methods: {
     handleSuccess(data) {
         this.url = data;
-        this.pic_name = data.replace('/api/img/','');
+        this.pic_name = data.replace('/api/static/img/','');
     },
     handleRemove() {
         //删除图片
