@@ -41,7 +41,7 @@
 
 <script>
 
-import { photoAdd } from 'api/photo';
+import { photoAdd,delete_pic } from 'api/photo';
 
 export default {
   data() {
