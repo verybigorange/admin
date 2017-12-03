@@ -41,8 +41,16 @@ const adminRouter = [
       },
       //新闻添加页
       {
-        path: "news_add",
+        path: "newsAdd",
         component: resolve => require(['admin/news/add.vue'], resolve),
+        meta: {
+          admin: true
+        },
+      },
+       //新闻详情页
+      {
+        path: "newsDetail",
+        component: resolve => require(['admin/news/detail.vue'], resolve),
         meta: {
           admin: true
         },

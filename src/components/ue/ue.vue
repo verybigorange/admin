@@ -32,6 +32,10 @@
     methods: {
       getUEContent() { // 获取内容方法
         return this.editor.getContent()
+      },
+      //获取存文本
+      getContentTxt(){
+         return this.editor.getContentTxt()
       }
     },
     destroyed() {
