@@ -10,9 +10,12 @@
        >
       </el-table-column>
       <el-table-column
-         prop="news_date"
+        
          label="发布时间"
       >
+        <template slot-scope="scope">
+          <span>{{scope.row.news_date.substr(0,4)+'-'+scope.row.news_date.substr(5,2)+'-'+scope.row.news_date.substr(8,2)+"&nbsp;"+scope.row.news_date.substr(11,8)}}</span>
+        </template>
       </el-table-column>
       <el-table-column
         width="250"
@@ -22,9 +25,9 @@
         :index="index"
       >
         <template slot-scope="scope">
-            <el-button type="danger" size="mini" @click="handleDelete(scope.row.work_id,scope.row.pic_name,scope.$index)">删除</el-button>
-            <el-button type="info" size="mini" @click="handleEdit(scope.row.work_id)">编辑</el-button>
-            <el-button type="success" size="mini" @click="handleDetail(scope.row.work_id)">详情</el-button>
+            <el-button type="danger" size="mini" @click="handleDelete(scope.row.news_id,scope.$index)">删除</el-button>
+            <el-button type="info" size="mini" @click="handleEdit(scope.row.news_id)">编辑</el-button>
+            <el-button type="success" size="mini" @click="handleDetail(scope.row.news_id)">详情</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -40,12 +43,14 @@
 </template>
 
 <script>
-import { work_select,delete_work } from 'api/works';
-import { comment_delete_all } from 'api/comment';
+import { news_select,delete_news } from 'api/news';
 
 export default {
-  mounted(){
-    console.log(this.$route.params.type)
+   async mounted(){
+    // 首次请求数据
+    let { count,list } = await news_select({limit:this.limit,currentPage:this.currentPage});
+    this.total = count;
+    this.tableData = list;
   },
   data(){
     return {
@@ -63,7 +68,7 @@ export default {
     // 切换分页
     async pageChange(size){
       this.currentPage = size;
-      let { list } = await work_select({limit:this.limit,currentPage:this.currentPage});
+      let { list } = await news_select({limit:this.limit,currentPage:this.currentPage});
       this.tableData = list;
     },
     // 新闻编辑
@@ -71,19 +76,17 @@ export default {
       this.$router.push("/admin/worksEdit?id="+id);
     },
     //新闻删除
-    async handleDelete(id,pic_name,index){
+    async handleDelete(id,index){
       // 删除后返回新数据
-      let res = await delete_work({id,pic_name});
+      let res = await delete_news({id});
       if(res == 1){
          this.total--;
          this.tableData.splice(index,1);
-         //删除作品并删除相关所有评论
-         comment_delete_all({work_id:id});
       }
     },
     //查看新闻详情
     handleDetail(id){
-       this.$router.push("/admin/worksDetail?id="+id);
+       this.$router.push("/admin/newsDetail?id="+id);
     },
   }
 }

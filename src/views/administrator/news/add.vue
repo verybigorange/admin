@@ -52,6 +52,8 @@
 </style>
 <script>
 import UE from "components/ue/ue.vue";
+import { newsAdd } from 'api/news';
+
 export default {
   components: { UE },
   data() {
@@ -70,12 +72,9 @@ export default {
   methods: {
     submit() {
       let content = this.$refs.ue.getUEContent(); // 调用子组件方法
-      // this.$notify({
-      //   title: "获取成功，可在控制台查看！",
-      //   message: content,
-      //   type: "success"
-      // });
-      console.log(content);
+      let plainText =  this.$refs.ue.getContentTxt(); //获得纯文本
+  
+      newsAdd({title:this.title,date:this.date,content,plainText});
     }
   }
 };
