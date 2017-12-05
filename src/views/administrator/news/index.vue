@@ -14,7 +14,7 @@
          label="发布时间"
       >
         <template slot-scope="scope">
-          <span>{{scope.row.news_date.substr(0,4)+'-'+scope.row.news_date.substr(5,2)+'-'+scope.row.news_date.substr(8,2)+"&nbsp;"+scope.row.news_date.substr(11,8)}}</span>
+          <span>{{convertUTCTimeToLocalTime(scope.row.news_date)}}</span>
         </template>
       </el-table-column>
       <el-table-column
@@ -44,6 +44,7 @@
 
 <script>
 import { news_select,delete_news } from 'api/news';
+import { convertUTCTimeToLocalTime } from 'utils/index'
 
 export default {
    async mounted(){
@@ -73,7 +74,7 @@ export default {
     },
     // 新闻编辑
     handleEdit(id){
-      this.$router.push("/admin/worksEdit?id="+id);
+      this.$router.push("/admin/newsEdit?id="+id);
     },
     //新闻删除
     async handleDelete(id,index){
@@ -88,6 +89,10 @@ export default {
     handleDetail(id){
        this.$router.push("/admin/newsDetail?id="+id);
     },
+    //时区转换
+    convertUTCTimeToLocalTime(date){
+      return convertUTCTimeToLocalTime(date)
+    }
   }
 }
 </script>

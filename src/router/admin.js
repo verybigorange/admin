@@ -55,6 +55,14 @@ const adminRouter = [
           admin: true
         },
       },
+       //新闻详情页
+      {
+        path: "newsEdit",
+        component: resolve => require(['admin/news/edit.vue'], resolve),
+        meta: {
+          admin: true
+        },
+      },
       // 作品页
       {
         path: "works",
