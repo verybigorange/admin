@@ -52,17 +52,17 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
         },
-        include: [resolve('src/assets/img')]
+        // include: [resolve('src/assets/img')]
       },
-      {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: utils.assetsPath('images/[name].[hash:7].[ext]')
-        },
-        include: [resolve('src/assets/images')]
-      },
+      // {
+      //   test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+      //   loader: 'url-loader',
+      //   options: {
+      //     limit: 10000,
+      //     name: utils.assetsPath('images/[name].[hash:7].[ext]')
+      //   },
+      //   include: [resolve('src/assets/images')]
+      // },
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
         loader: 'url-loader',
