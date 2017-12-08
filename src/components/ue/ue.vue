@@ -8,7 +8,8 @@
     name: 'UE',
     data () {
       return {
-        editor: null
+        editor: null,
+        html:'',
       }
     },
     props: {
@@ -27,6 +28,7 @@
       this.editor = UE.getEditor(this.id, this.config); // 初始化UE
       this.editor.addListener("ready", function () {
         _this.editor.setContent(_this.defaultMsg); // 确保UE加载完成后，放入内容。
+        _this.editor.execCommand('insertHtml', _this.html); //用于回显
       });
     },
     methods: {
@@ -36,6 +38,10 @@
       //获取存文本
       getContentTxt(){
          return this.editor.getContentTxt()
+      },
+      // 插入给定的内容
+      insertHtml(html){
+        this.html = html;
       }
     },
     destroyed() {

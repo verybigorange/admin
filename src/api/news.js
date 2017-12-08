@@ -46,5 +46,20 @@ export async function delete_news(params) {
         })
         return 0;
     }
-    
+}
+
+//编辑新闻
+export async function news_edit(params) {
+    let { data } = await http.post('/news/edit',params);
+    if (data == '1') {
+        Message({
+            message: "编辑成功",
+            type: 'success'
+        })
+        router.go(-1);
+    } else {
+        Message.error({
+            message: "编辑失败！"
+        })
+    }
 }

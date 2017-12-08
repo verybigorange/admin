@@ -5,13 +5,13 @@
       <div class="profile-content">
             <section class="summary pull-left">
                 <div class="portrait-content">
-                    <img style="width: 100%" src="../../../assets/images/portrait.jpg" alt="大师肖像">
+                    <img style="width: 100%" :src="require('assets/img/portrait.jpg')" alt="大师肖像">
                 </div>
                 <h5 class="name">何笑勤</h5>
                 <p class="profile-text">字默舟，生于一九五六年，四川洪雅人。中原书画院研究员，眉山地区美协会员。　八岁开始学画，早年曾受画坛前辈钱松岩、李琼玖等先生的指教。自学三十余年，深入传统的研修，并把现代精神与笔墨融合其中不断的求索，勤奋笔耕，力求突破与创新、自然与物象变与合的统一感悟、生化，其作品深得同行和前辈认可。</p>
                 <section class="qr-section">
                     <div class="qr-content pull-left">
-                        <img style="width: 100%" src="../../../assets/images/qr_code.jpg" alt="二维码">
+                        <img style="width: 100%" :src="require('assets/img/qr_code.jpg')" alt="二维码">
                     </div>
                     <div class="qr-text pull-left">
                         <span>扫描二维码访问</span>
@@ -151,7 +151,7 @@ export default {
     }
 
     .photo-shows2-container {
-        background-image: url('../../../assets/images/index_nav_bk.jpg');
+        background-image: url('../../../assets/img/index_nav_bk.jpg');
         background-size: 100px;
     }
     
