@@ -21,7 +21,7 @@ export default {
     .works-container {
         background-color: #f6f0e2;
         min-height: calc(100% - 100px);
-        background-image: url('../../../assets/images/bg2.png');
+        background-image: url('../../../assets/img/bg2.png');
         background-size: 100%;
         background-repeat: no-repeat;
         height: 100%;

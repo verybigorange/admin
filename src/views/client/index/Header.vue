@@ -1,7 +1,7 @@
 <template>
    <header>
       <section class="index-banner">
-        <img style="width: 100%" src="../../../assets/img/banner_01.jpg" alt="banner">
+        <img style="width: 100%" :src="require('assets/img/banner_01.jpg')" alt="banner">
       </section>
       <nav class="index-nav-bar">
         <ul class="index-nav-content clearfix">
@@ -29,7 +29,7 @@ export default {
   }
   .index-nav-bar{
     height: 60px;
-    background-image: url('../../../assets/images/index_nav_bk.jpg');
+    background-image: url('../../../assets/img/index_nav_bk.jpg');
     background-size: 100px;
     line-height: 60px;
     text-align: center;

@@ -7,7 +7,7 @@
             <p class="news-date">2017-10-11</p>
             <div class="news-content">
                 <p style="text-align:center;text-indent:0">
-                    <img style="width:100%;" src="../../../assets/img/news_photo.png" alt="新闻照片">
+                    <img style="width:100%;" :src="require('assets/img/news_photo.png')" alt="新闻照片">
                 </p>
                 <p>
                     字默舟，生于一九五六年，四川洪雅人。中原书画院研究员，眉山地区美协会

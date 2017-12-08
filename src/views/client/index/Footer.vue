@@ -86,21 +86,21 @@ export default {
         display: block;
         width: 35px;
         height: 35px;
-        background-image: url('../../../assets/images/weibo.png');
+        background-image: url('../../../assets/img/weibo.png');
         background-size: 35px 35px;
     }
      i.qq {
         display: block;
         width: 35px;
         height: 35px;
-        background-image: url('../../../assets/images/QQ.png');
+        background-image: url('../../../assets/img/QQ.png');
         background-size: 35px 35px;
     }
      i.weixin {
         display: block;
         width: 35px;
         height: 35px;
-        background-image: url('../../../assets/images/weixin.png');
+        // background-image: url('../../../assets/img/weixin.png');
         background-size: 35px 35px;
     }
     .adds-m,.adds-r {
