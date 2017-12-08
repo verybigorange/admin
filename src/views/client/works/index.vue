@@ -1,7 +1,7 @@
 <template>
     <div class="works-container">
         <Nav />
-        <WorksContent />
+        <router-view></router-view>
     </div>
 </template>
 

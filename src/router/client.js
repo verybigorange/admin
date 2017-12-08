@@ -9,7 +9,17 @@ const clientRouter = [
       },
       {
         path: "/works",
-        component: resolve => require(['client/works'], resolve)
+        component: resolve => require(['client/works'], resolve),
+        children: [
+          {
+            path: '',
+            component: resolve => require(['client/works/WorksContent'], resolve)
+          },
+          {
+            path: 'detail',
+            component: resolve => require(['client/works/WorksDetail'], resolve)
+          }
+        ]
       }
 ]
 
