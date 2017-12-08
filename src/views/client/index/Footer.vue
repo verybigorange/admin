@@ -100,7 +100,7 @@ export default {
         display: block;
         width: 35px;
         height: 35px;
-        // background-image: url('../../../assets/img/weixin.png');
+        background-image: url('../../../assets/img/weixin.png');
         background-size: 35px 35px;
     }
     .adds-m,.adds-r {
