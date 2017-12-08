@@ -34,6 +34,10 @@ const clientRouter = [
       {
         path: "/album",
         component: resolve => require(['client/album'], resolve),
+      },
+      {
+        path: "/contact",
+        component: resolve => require(['client/contact'], resolve),
       }
 ]
 

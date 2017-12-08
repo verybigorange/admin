@@ -4,13 +4,13 @@
         <img style="width: 100%" :src="require('assets/img/banner_01.jpg')" alt="banner">
       </section>
       <nav class="index-nav-bar">
-        <ul class="index-nav-content clearfix">
-          <li class="nav-item">首页</li>
-          <li class="nav-item">个人简介</li>
-          <li class="nav-item">作品展示</li>
-          <li class="nav-item">相册</li>
-          <li class="nav-item">新闻中心</li>
-          <li class="nav-item">联系我们</li>
+        <ul class="index-nav-content clearfix" @click="navChange">
+          <li class="nav-item active" data-index="/">首页</li>
+          <li class="nav-item" data-index="/profile">个人简介</li>
+          <li class="nav-item" data-index="/works">作品展示</li>
+          <li class="nav-item" data-index="/album">相册</li>
+          <li class="nav-item" data-index="/news">新闻中心</li>
+          <li class="nav-item" data-index="/contact">联系我们</li>
         </ul>
       </nav>
     </header>
@@ -19,10 +19,16 @@
 <script>
 export default {
   name: 'Header',
+  methods: {
+    navChange(e) {
+      let index = e.target.dataset.index
+      this.$router.push(index)
+    }
+  }
 }
 </script>
 
-<style scoped>
+<style scoped lang="less">
   .index-banner {
     max-height: 350px;
     overflow: hidden;
@@ -49,5 +55,14 @@ export default {
     height: 60px;
     font-size: 30px;
     color: #b23e2f;
+    cursor: pointer;
+    &.active {
+      background-color: #b23e2f;
+      color: #fff;
+    }
+    &:hover {
+      background-color: #b23e2f;
+      color: #fff;
+    }
   }
 </style>

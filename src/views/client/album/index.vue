@@ -1,16 +1,16 @@
 <template>
     <div class="index-container">
-        <Nav />
+        <NavGations />
         <AlbumContent />
     </div>
 </template>
 
 <script>
-import Nav from '../common/Nav'
+import NavGations from '../common/NavGations'
 import AlbumContent from './AlbumContent'
 export default {
     components: {
-        Nav,
+        NavGations,
         AlbumContent
     }
 }

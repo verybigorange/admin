@@ -1,17 +1,17 @@
 <template>
     <div class="works-container">
-        <Nav />
+        <NavGations />
         <router-view></router-view>
     </div>
 </template>
 
 <script>
-import Nav from '../common/Nav'
+import NavGations from '../common/NavGations'
 import WorksContent from './WorksContent'
 export default {
     name: 'Works',
     components: {
-        Nav,
+        NavGations,
         WorksContent
     }
 }

@@ -4,60 +4,20 @@
             <h3>相册</h3>
             <h4>Photo album</h4>
             <div class="photo-wrapper clearfix">
-                <div class="photo-item pull-left">
+                <div class="photo-item pull-left" v-for="(item,index) in data" :key='index' >
                     <div class="photo-content">
-                        <img src="../../../assets/img/news_photo.png" alt="图片">
+                        <img :src="item.pic_url" alt="图片">
                     </div>
-                    <p class="photo-desc">2017年照片</p>
-                </div>
-                 <div class="photo-item pull-left">
-                    <div class="photo-content">
-                        <img src="../../../assets/img/news_photo.png" alt="图片">
-                    </div>
-                    <p class="photo-desc">2017年照片</p>
-                </div>
-                 <div class="photo-item pull-left">
-                    <div class="photo-content">
-                        <img src="../../../assets/img/news_photo.png" alt="图片">
-                    </div>
-                    <p class="photo-desc">2017年照片</p>
-                </div>
-                 <div class="photo-item pull-left">
-                    <div class="photo-content">
-                        <img src="../../../assets/img/news_photo.png" alt="图片">
-                    </div>
-                    <p class="photo-desc">2017年照片</p>
-                </div>
-                 <div class="photo-item pull-left">
-                    <div class="photo-content">
-                        <img src="../../../assets/img/news_photo.png" alt="图片">
-                    </div>
-                    <p class="photo-desc">2017年照片</p>
-                </div>
-                 <div class="photo-item pull-left">
-                    <div class="photo-content">
-                        <img src="../../../assets/img/news_photo.png" alt="图片">
-                    </div>
-                    <p class="photo-desc">2017年照片</p>
-                </div>
-                <div class="photo-item pull-left">
-                    <div class="photo-content">
-                        <img src="../../../assets/img/news_photo.png" alt="图片">
-                    </div>
-                    <p class="photo-desc">2017年照片</p>
-                </div>
-                <div class="photo-item pull-left">
-                    <div class="photo-content">
-                        <img src="../../../assets/img/news_photo.png" alt="图片">
-                    </div>
-                    <p class="photo-desc">2017年照片</p>
+                    <p class="photo-desc">{{item.pic_title}}</p>
                 </div>
             </div>
              <div class="page-wrapper album">
                         <el-pagination
                             background=true
                             layout="prev, pager, next"
-                            :total="199"
+                            :page-size="limit"
+                            :total="total"
+                            @current-change = 'pageChange'
                         >
                         </el-pagination>
                 </div>
@@ -66,8 +26,38 @@
 </template>
 
 <script>
+import { photo_select } from 'api/photo';
 export default {
-  name: 'AlbumContent'
+    name: 'AlbumContent',
+    async mounted(){
+        document.body.addEventListener('mouseenter',()=>{
+        this.currentIndex = -1;
+        },false)
+
+        // 首次请求数据
+        let { count,list } = await photo_select({limit:this.limit,currentPage:this.currentPage});
+        this.total = count;
+        this.data = list;
+    },
+    data(){
+        return{
+            currentBigPic:-1, // 当前显示的大图
+            currentIndex:-1,      // 当前指向的索引
+            tableData: [], //表格数据
+            limit:8,  //每页显示数量
+            total:0,  //总数
+            currentPage:1, //当前页,
+            data:[], //相册数据
+        }
+    },
+    methods:{
+        // 切换分页
+        async pageChange(size){
+            this.currentPage = size;
+            let { list } = await photo_select({limit:this.limit,currentPage:this.currentPage});
+            this.data = list;
+        }
+    }
 }
 </script>
 
