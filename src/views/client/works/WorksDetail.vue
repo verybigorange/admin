@@ -122,12 +122,3 @@ export default {
     }
    
 </style>
-<style>
-    div.page-wrapper .el-pagination * {
-        background-color: transparent;
-    }
-    div.page-wrapper .el-pager > .number.active {
-        background-color: #b23e2f;
-        color: #fff;
-    }
-</style>

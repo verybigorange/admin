@@ -1,17 +1,17 @@
 <template>
     <div class="index-container">
         <Nav />
-        <router-view></router-view>
+        <AlbumContent />
     </div>
 </template>
 
 <script>
 import Nav from '../common/Nav'
-import NewsContent from './NewsContent'
+import AlbumContent from './AlbumContent'
 export default {
     components: {
         Nav,
-        NewsContent
+        AlbumContent
     }
 }
 </script>
