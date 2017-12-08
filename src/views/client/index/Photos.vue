@@ -69,7 +69,7 @@ export default {
     .photos-content {
         height: 305px;
         width: 1015px;
-        background-image: url('../../../assets/images/index_nav_bk.jpg');
+        background-image: url('../../../assets/img/index_nav_bk.jpg');
         background-size: 100px;
         overflow: hidden;
         padding: 15px 4.5px
