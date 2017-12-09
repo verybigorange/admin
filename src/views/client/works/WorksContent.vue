@@ -1,30 +1,26 @@
  <template>
-    <div class="container">
-        <div class="center">
-            <h3>作品展示</h3>
-            <h4>Exhibition of works</h4>
-            <ul @click="handleTypeChange">
-                <li v-for="(item, index) in types" class="works-type" :class="{active: type == item}" :key="index">{{item}}</li>
-            </ul>
-            <div class="works-content">
-               <div class="works-item" v-for="(item, index) in data" :key="index">
-                   <img style="width: 100%" :src="item.pic_url" alt="作品">
-                   <div class="works-desc">
-                      <h6>《{{item.work_title}}》</h6>
-                      <p><span class="works-view"><i class="el-icon-view"></i>{{item.view_count}}</span><span class="works-edit"><i class="el-icon-edit-outline"></i>17</span></p>
-                   </div>
-               </div>
+    <div class="center">
+        <ul @click="handleTypeChange">
+            <li v-for="(item, index) in types" class="works-type" :class="{active: type == item}" :key="index">{{item}}</li>
+        </ul>
+        <div class="works-content">
+            <div class="works-item" v-for="(item, index) in data" :key="index">
+                <img style="width: 100%" :src="item.pic_url" alt="作品">
+                <div class="works-desc">
+                    <h6>《{{item.work_title}}》</h6>
+                    <p><span class="works-view"><i class="el-icon-view"></i>{{item.view_count}}</span><span class="works-edit"><i class="el-icon-edit-outline"></i>17</span></p>
+                </div>
             </div>
-            <div class="page-wrapper works">
-                <el-pagination
-                    background=true
-                    layout="prev, pager, next"
-                    :total="total"
-                    :page-size="limit"
-                    @@current-change = "pageChange"
-                >
-                </el-pagination>
-            </div>
+        </div>
+        <div class="page-wrapper works">
+            <el-pagination
+                background=true
+                layout="prev, pager, next"
+                :total="total"
+                :page-size="limit"
+                @@current-change = "pageChange"
+            >
+            </el-pagination>
         </div>
     </div>
 </template>

@@ -1,8 +1,6 @@
 <template>
     <div class="container">
         <div class="center">
-            <h3>新闻中心</h3>
-            <h4>News Center</h4>
             <ul>
                 <li class="news-type active">全部</li>
                 <li class="news-type">业界新闻</li>

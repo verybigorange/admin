@@ -1,8 +1,6 @@
 <template>
     <div class="container">
         <div class="center">
-            <h3>新闻中心</h3>
-            <h4>News Center</h4>
             <h5>关于何笑勤，你最想了解的几个问题</h5>
             <p class="news-date">2017-10-11</p>
             <div class="news-content">
