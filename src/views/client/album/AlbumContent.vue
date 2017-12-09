@@ -1,28 +1,24 @@
 <template>
-  <div class="container">
-       <div class="center">
-            <h3>相册</h3>
-            <h4>Photo album</h4>
-            <div class="photo-wrapper clearfix">
-                <div class="photo-item pull-left" v-for="(item,index) in data" :key='index' >
-                    <div class="photo-content">
-                        <img :src="item.pic_url" alt="图片">
-                    </div>
-                    <p class="photo-desc">{{item.pic_title}}</p>
+    <div class="center">
+        <div class="photo-wrapper clearfix">
+            <div class="photo-item pull-left" v-for="(item,index) in data" :key='index' >
+                <div class="photo-content">
+                    <img :src="item.pic_url" alt="图片">
                 </div>
+                <p class="photo-desc">{{item.pic_title}}</p>
             </div>
-             <div class="page-wrapper album">
-                        <el-pagination
-                            background=true
-                            layout="prev, pager, next"
-                            :page-size="limit"
-                            :total="total"
-                            @current-change = 'pageChange'
-                        >
-                        </el-pagination>
-                </div>
         </div>
-  </div>
+            <div class="page-wrapper album">
+                    <el-pagination
+                        background=true
+                        layout="prev, pager, next"
+                        :page-size="limit"
+                        :total="total"
+                        @current-change = 'pageChange'
+                    >
+                    </el-pagination>
+            </div>
+    </div>
 </template>
 
 <script>

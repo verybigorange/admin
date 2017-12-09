@@ -1,27 +1,22 @@
 <template>
-    <div class="contact-index-container">
-        <NavGations />
-        <div class="center">
-            <h3>联系我们</h3>
-            <h4>Contact us</h4>
-            <p><span class="attention">关注</span><span class="web-name">何笑勤个人网站</span></p>
-            <div class="footer-content clearfix">
-                <div class="links-l pull-left clearfix">
-                    <a class="attention-link" href=""><i class="weibo"></i></a>
-                    <a class="attention-link" href=""><i class="qq"></i></a>
-                    <a class="attention-link" href=""><i class="weixin"></i></a>
-                </div>
-                <div class="adds-m pull-left">
-                    <p>地址：四川省眉山市洪雅县</p>
-                    <p>电话：028-58478454</p>
-                    <p>地址：0000000000@qq.com</p>
-                </div>
-                <div class="adds-r pull-right">
-                    <p>邮编：620350</p>
-                    <p>地址：18183272222</p>
-                </div>
-            </div>
+    <div class="center">
+        <div class="portrait-content pull-left">
+            <img style="width: 100%" :src="require('assets/img/protrait_01.jpg')" alt="大师肖像">
         </div>
+        <div class="profile-desc pull-right">
+            <h5 class="name">何笑勤</h5>
+            <p class="profile-text">
+                字默舟，生于一九五六年，四川洪雅人。<br/>
+                中原书画院研究员，眉山地区美协会员。<br/>　
+                八岁开始学画，早年曾受画坛前辈钱松岩、李琼玖等先生的指教。
+                自学三十余年，深入传统的研修，并把现代精神与笔墨融合其中不
+                断的求索，勤奋笔耕，力求突破与创新、自然与物象变与合的统一
+                感悟、生化，其作品深得同行和前辈认可。二○○二年代表作\"长
+                江三峡图卷\"（长31米）被中国长江三峡工程总公司收藏。
+            </p>
+            <p class="main-works">
+                 主要作品：《横绝峨嵋岭》、《横绝峨嵋岭》、
+            </P>
         </div>
     </div>
 </template>
@@ -36,99 +31,36 @@ export default {
 </script>
 
 <style lang="less" scoped>
-    .contact-index-container {
-        background-color: #f6f0e2;
-        min-height: calc(100% - 100px);
-        background-image: url('../../../assets/img/bg2.png');
-        background-size: 100%;
-        background-repeat: no-repeat;
-        height: 100%;
-        overflow: auto;
-    }
     .center {
         width: 1024px;
         margin: 0 auto;
         height: 100%;
     }
-    h3 {
-        color: #b23e2f;
+    h5 {
         font-size: 30px;
-        border-left: 5px solid #b23e2f;
-        padding-left: 45px;
-        margin-left: -45px;
-        margin-top: 50px;
-        margin-bottom: 15px;
+        margin: 0;
+        padding: 0;
+        padding-top: 30px;
+        padding-left: 30px;
     }
-    h4 {
-        color: #989898;
-        font-size: 23px;
-        margin-top: 15px;
-        margin-bottom: 40px;
-    }
-    .solid-hr-b {
-        height: 4px;
-        margin-top: 22px;
-        background-color: #b23e2f;
-    }
-    .solid-hr-t {
-        height: 0;
-        border-top: 1px solid  #b23e2f;
-    }
-    .attention {
-        font-size: 25px;
+    p {
+        padding-left: 30px;
         color: #666;
-        margin: 60px 30px;
+        font-size: 20px;
+        line-height: 32px;
     }
-    .web-name {
-        font-size: 25px;
-        color: #666;
-        margin: 60px 30px;
-        margin-left: 250px;
-    }
-    .attention-link {
-        width: 35px;
-        height: 35px;
-        float: left;
-        margin: 0 0 65px 50px; 
-    }
-    .attention-link+.attention-link {
-        margin-left: 45px;
-    }
-    i.weibo {
-        display: block;
-        width: 35px;
-        height: 35px;
-        background-image: url('../../../assets/img/weibo.png');
-        background-size: 35px 35px;
-    }
-     i.qq {
-        display: block;
-        width: 35px;
-        height: 35px;
-        background-image: url('../../../assets/img/QQ.png');
-        background-size: 35px 35px;
-    }
-     i.weixin {
-        display: block;
-        width: 35px;
-        height: 35px;
-        background-image: url('../../../assets/img/weixin.png');
-        background-size: 35px 35px;
-    }
-    .adds-m,.adds-r {
-        font-size: 23px;
-        color: #989898;
-        margin-top: 60px;
-        margin-left: 120px;
-        &>p {
-            padding: 0;
-            margin: 0;
-            &+p {
-                margin-top: 35px;
-            }
+    .portrait-content {
+        width: 400px;
+        height: 470px;
+        overflow: hidden;
+        &>img {
+            height: 100%;
         }
     }
-    .links-l {
-        margin-top: 60px;
+    .profile-desc {
+        width: 600px;
+    }
+    .main-works {
+        font-size: 25px;
     }
 </style>
