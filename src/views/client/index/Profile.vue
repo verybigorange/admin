@@ -26,28 +26,29 @@
                     :interval="4000"
                     type="card"
                     height="360px"
+                    @change="handleImgChange"
                 >
                     <el-carousel-item
                         v-for="(img, index)  in imgArrs"
                         :key="index"
+                        class="show1-Wrapper"
                     >
-                        <img style="height:100%" :src="img.pic_url" :alt="img.work_title">
+                        <img  @click="handleImgClick(img)" style="height:100%" :src="img.pic_url" :alt="img.work_title">
                     </el-carousel-item>
-                    <h5 class="wrks-title-1">dalfjsaldfjl</h5>
+                    <h5 class="wrks-title-1">{{imgArrs[activeIndex]? imgArrs[activeIndex].work_title : ''}}</h5>
                 </el-carousel>
                 <div class="photo-shows2">
                     <hr class="solid-line"/>
                     <div class="clearfix">
                         <h5 class="pull-left">作品展示</h5>
-                        <span class="pull-right more">更多</span>
+                        <span class="pull-right more" @click="handleMoreClick">更多</span>
                     </div>
                     <div class="photo-shows2-container">
                         <hr class="dash-line"/>
                          <swiper class="photo-shows2-content" :options="swiperOption" ref="mySwiper">
                             <!-- slides -->
                             <swiperSlide v-for="(img, index) in imgArrs" :key="index">
-                                <div class="img-wrapper" :style="{'background-image': 'url('+img.pic_url +')'}">
-                                    <!-- <img :src="img.pic_url" :alt="img.work_title"> -->
+                                <div @click="handleImgClick(img)" class="img-wrapper2" :style="{'background-image': 'url('+img.pic_url +')'}">
                                 </div>
                                 <p class="img-title-2">{{img.work_title}}</p>
                             </swiperSlide>
@@ -88,14 +89,22 @@ export default {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
                 },
-            }
+            },
+            activeIndex: 0
         }
     },
     async mounted() {
         this.imgArrs = await work_home_show()
     },
     methods: {
-        handleChangeShows1() {
+        handleImgChange(activeIndex, prevIndex) {
+            this.activeIndex = activeIndex
+        },
+        handleImgClick(img) {
+            this.$router.push(`/works/detail?id=${img.work_id}`)
+        },
+        handleMoreClick() {
+            this.$router.push(`/works`)
         }
     },
     computed: {
@@ -111,6 +120,7 @@ export default {
     .wrks-title-1 {
         position: absolute;
         top: 308px;
+        left: 250px;
         z-index: 10000;
         color: #fff;
         font-weight: normal;
@@ -228,17 +238,22 @@ export default {
 
     .photo-shows1 {
         height: 360px;
-        width: 100%;
-        background-color:rgba(255, 255, 255, 0.7);
+        width: 1190px;
+        margin-left: -250px;
+        background-color:rgba(0, 0, 0, 0.2);
         overflow: hidden;
+    }
+
+    .show1-Wrapper {
+        text-align: center;
+        cursor: pointer;
     }
 
     .photo-shows2 {
         height: 360px;
         width: 100%;
     }
-
-     .img-wrapper {
+    .img-wrapper2 {
         width: 130px;
         height: 130px;
         overflow: hidden;
@@ -246,12 +261,7 @@ export default {
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
-        // vertical-align: middle;
-        // line-height: 160px;
-        // &>img {
-        //     width: 100%;
-        //     vertical-align: middle;
-        // }
+        cursor: pointer;
     }
 
     .photo-shows2-container {
@@ -279,6 +289,7 @@ export default {
         text-align: center;
         line-height: 35px;
         margin: 10px 20px;
+        cursor: pointer;
     }
 </style>
 <style lang="less">
@@ -286,7 +297,7 @@ export default {
         position: relative;
         background-color: rgba(0, 0, 0, 0.5);
         width: 690px;
-        left: 0;
+        left: 250px;
         top: -50px;
         height: 50px;
         text-align: right;
@@ -310,5 +321,8 @@ export default {
                 }
             } 
         }
+    }
+    .photo-shows1 .el-carousel__mask {
+        background-color: rgba(0,0,0,0);
     }
 </style>

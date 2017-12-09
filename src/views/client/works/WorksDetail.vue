@@ -194,4 +194,19 @@ export default {
         float: right;
         cursor: pointer;
     }
+    
+    .page-wrapper {
+        text-align: center;
+        margin: 30px 0 80px;
+    }
+</style>
+
+<style>
+    div.page-wrapper .el-pagination * {
+        background-color: transparent;
+    }
+    div.page-wrapper .el-pager > .number.active {
+        background-color: #b23e2f;
+        color: #fff;
+    }
 </style>

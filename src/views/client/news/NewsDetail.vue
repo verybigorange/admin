@@ -3,7 +3,7 @@
         <div class="center">
             <h5>{{news_title}}</h5>
             <p class="news-date">{{news_date}}</p>
-            <div class="news-content"  ref="content">
+            <div id="news-content" class="news-content"  ref="content">
                 {{news_content}}     
             </div>
         </div>
@@ -81,5 +81,16 @@ export default {
         width: 800px;
         margin: 0 auto;
         background: transparent;
+        & * {
+            background-color: transparent !important;
+        }
+    }
+</style>
+<style lang="less">
+    #news-content {
+        background: transparent;
+        & * {
+            background-color: transparent !important;
+        }
     }
 </style>
