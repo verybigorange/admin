@@ -3,7 +3,7 @@
         <div class="nav-container">
                 <div class="center">
                     <ul class="clearfix" @click="navChnage">
-                        <li v-for="(item,index) in navs" :class="{active: path == item}" :data-index="item" :key="index">{{pathMaps[item].title}}</li>
+                        <li v-for="(item,index) in navs" :class="{active: path.indexOf(item) !== -1}" :data-index="item" :key="index">{{pathMaps[item].title}}</li>
                     </ul>
                 </div>
         </div>
@@ -34,6 +34,10 @@ export default {
                     title: '作品展示',
                     subTitle: 'Exhibition of works'
                 },
+                '/works/detail': {
+                    title: '作品展示',
+                    subTitle: 'Exhibition of works'
+                },
                 '/album': {
                     title: '相册',
                     subTitle: 'Photo album'
@@ -42,10 +46,15 @@ export default {
                     title: '新闻中心',
                     subTitle: 'News Center'
                 },
+                '/news/detail': {
+                    title: '新闻中心',
+                    subTitle: 'News Center'
+                },
                 '/contact': {
                     title: '联系我们',
                     subTitle: 'Contact us'
                 },
+                
             }
         }
     },

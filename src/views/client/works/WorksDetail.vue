@@ -1,8 +1,5 @@
 <template>
-    <div class="container">
         <div class="center">
-            <h3>作品展示</h3>
-            <h4>Exhibition of works</h4>
             <div class="works-detail-wrapper">
                 <div class="works-detail-image">
                     <img style="width: 100%" :src="require('../../../assets/img/works_03.jpg')" alt="作品图片" />

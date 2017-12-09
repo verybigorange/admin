@@ -1,4 +1,4 @@
-<template>
+ <template>
     <div class="center">
         <ul @click="handleTypeChange">
             <li v-for="(item, index) in types" class="works-type" :class="{active: type == item}" :key="index">{{item}}</li>
@@ -29,8 +29,6 @@
 import { work_select } from 'api/works'
 export default {
     name: "WorksContent",
-    components: {
-    },
     async mounted() {
          // 首次请求数据
         let { count,list } = await work_select({limit:this.limit,currentPage:this.currentPage});
