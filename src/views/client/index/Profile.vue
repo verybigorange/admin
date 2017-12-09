@@ -33,8 +33,8 @@
                     >
                         <img style="height:100%" :src="img.pic_url" :alt="img.work_title">
                     </el-carousel-item>
+                    <h5 class="wrks-title-1">dalfjsaldfjl</h5>
                 </el-carousel>
-                <!-- <h5 class="wrks-title-1">{{img.work_title}}</h5> -->
                 <div class="photo-shows2">
                     <hr class="solid-line"/>
                     <div class="clearfix">
@@ -43,14 +43,20 @@
                     </div>
                     <div class="photo-shows2-container">
                         <hr class="dash-line"/>
-                        <el-carousel
-                            class="photo-shows2-content"
-                            height="200px"
-                        >
-                            <el-carousel-item v-for="item in 4" :key="item">
-                                <h3> 轮播图{{item}}</h3>
-                            </el-carousel-item>
-                        </el-carousel>
+                         <swiper class="photo-shows2-content" :options="swiperOption" ref="mySwiper">
+                            <!-- slides -->
+                            <swiperSlide v-for="(img, index) in imgArrs" :key="index">
+                                <div class="img-wrapper" :style="{'background-image': 'url('+img.pic_url +')'}">
+                                    <!-- <img :src="img.pic_url" :alt="img.work_title"> -->
+                                </div>
+                                <p class="img-title-2">{{img.work_title}}</p>
+                            </swiperSlide>
+                            <!-- Optional controls -->
+                            <!-- <div class="swiper-pagination"  slot="pagination"></div> -->
+                            <!-- <div class="swiper-scrollbar"   slot="scrollbar"></div> -->
+                        </swiper>
+                        <div class="swiper-button-prev" slot="button-prev"></div>
+                        <div class="swiper-button-next" slot="button-next"></div>
                     </div>
                 </div>
             </section>
@@ -59,12 +65,30 @@
 </template>
 
 <script>
+import 'swiper/dist/css/swiper.css'
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import { work_home_show } from 'api/works'
 export default {
     name: 'Profile',
+    components: {
+        swiper,
+        swiperSlide
+    },
     data() {
         return {
-            imgArrs: [], //图片数据,
+            imgArrs: [],
+            swiperOption: {
+                loop: true,
+                loopAdditionalSlides: 3,
+                autoplay: true,
+                slidesPerView: 4,
+                spaceBetween: 13.333,
+                height: 160,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            }
         }
     },
     async mounted() {
@@ -73,12 +97,46 @@ export default {
     methods: {
         handleChangeShows1() {
         }
-    }
+    },
+    computed: {
+      swiper() {
+        return this.$refs.mySwiper.swiper
+      }
+    },
 }
 </script>
 
 
 <style lang="less" scoped>
+    .wrks-title-1 {
+        position: absolute;
+        top: 308px;
+        z-index: 10000;
+        color: #fff;
+        font-weight: normal;
+        font-size: 24px;
+    }
+    .swiper-button-prev {
+        // background: #badd;
+        width: 29px;
+        height: 56px;
+        position: relative;
+        left: 15px;
+        top: -98px;
+        font-size: 50px;
+        background-image: url('../../../assets/img/prev.png');
+        background-repeat: no-repeat;
+    }
+    .swiper-button-next {
+        // background: #badd;
+        width: 29px;
+        height: 56px;
+        position: relative;
+        left: 645px;
+        top: -130px;
+        background-image: url('../../../assets/img/next.png');
+        background-repeat: no-repeat;
+    }
     h3 {
         font-size: 35px;
         color: #b23e2f;
@@ -125,6 +183,9 @@ export default {
     .portrait-content {
         width: 275px;
         height: 360px;
+    }
+    .img-title-2 {
+        text-align: center;
     }
 
     .profile-text {
@@ -177,6 +238,22 @@ export default {
         width: 100%;
     }
 
+     .img-wrapper {
+        width: 130px;
+        height: 130px;
+        overflow: hidden;
+        background-color: #e6e6e6;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        // vertical-align: middle;
+        // line-height: 160px;
+        // &>img {
+        //     width: 100%;
+        //     vertical-align: middle;
+        // }
+    }
+
     .photo-shows2-container {
         background-image: url('../../../assets/img/index_nav_bk.jpg');
         background-size: 100px;
@@ -184,12 +261,12 @@ export default {
         width: 100%;
     }
     .photo-shows2-content {
-        width: 580px;
-        height: 200px;
+        width: 560px;
+        height: 180px;
+        padding: 10px;
         margin-top: 40px;
         margin-left: 55px;
         background-color: #fff;
-        overflow: hidden;
     }
     
     .more {
