@@ -36,14 +36,13 @@ export async function comment_delete_all(params) {
 }
 
 //增加作品评论
-export async function commentAdd(params) {
+export async function comment_add(params) {
     let {data} = await http.post('/comment/add',params);
     if (data == '1') {
         Message({
             message: "评论成功！",
             type: 'success'
         })
-        router.go(-1);
     } else {
         Message.error({
             message: "评论失败！"

@@ -2,25 +2,32 @@
         <div class="center">
             <div class="works-detail-wrapper">
                 <div class="works-detail-image">
-                    <img style="width: 100%" :src="require('../../../assets/img/works_03.jpg')" alt="作品图片" />
+                    <img style="max-height:450px;cursor:pointer" :src="pic_url" alt="作品图片" @click="currentBigPic = true" />
+                    <div class='big-pic' v-show='currentBigPic' @click='currentBigPic=false'>
+                        <img :src="pic_url" alt="图片未加载成功">
+                    </div>
                 </div>
-                <h5>《作品名称》</h5>
+                <h5>《{{work_title}}》</h5>
                 <p class="works-label clearfix">
-                    <span class="view-num pull-left">浏览222次</span>
-                    <span class="comment-num pull-right"><i class="el-icon-edit-outline"></i>217</span>
+                    <span class="view-num pull-left">浏览{{view_count}}次</span>
+                    <!-- <span class="comment-num pull-right"><i class="el-icon-edit-outline"></i>217</span> -->
                 </p>
-                <p class="comment-text">评论</p>
+               <el-input type="textarea" v-model="txt" placeholder="120个字以内" :maxlength=120 :autosize="{ minRows: 2, maxRows: 4}"></el-input>
+               <span class="comment-btn" @click="commit">发表</span>
+               <div style="clear:both;"></div>
                 <div class="works-comments">
-                    <div class="comment-item">
+                    <div class="comment-item" v-for="(item,index) in tableData" :key="index">
                         <p class="comment-person">游客评论</p>
-                        <p class="comment-date">10:14</p>
-                        <p class="comment-content">fdjlfjlfdsaldfjdslfjlasdjflasjfljhahahaf dflfjldfs jlsdfjjdls  jfdlsfjla </p>
+                        <p class="comment-date">{{convertUTCTimeToLocalTime(item.comment_date)}}</p>
+                        <p class="comment-content">{{item.comment}}</p>
                     </div>
                     <div class="page-wrapper works">
                         <el-pagination
-                            background=true
+                            :background=true
                             layout="prev, pager, next"
-                            :total="199"
+                            :page-size="limit"
+                            @current-change = 'pageChange'
+                            :total="total"
                         >
                         </el-pagination>
                     </div>
@@ -31,8 +38,58 @@
 </template>
 
 <script>
+import { comment_all,comment_add } from 'api/comment';
+import { work_select_id } from 'api/works';
+import { convertUTCTimeToLocalTime } from 'utils/index.js' 
+
 export default {
-  name: "WorksContent"
+  name: "WorksContent",
+  data() {
+    return {
+      tableData: [],
+      work_id:0, //作品id
+      limit:5,  //每页显示数量
+      total:0,  //总数
+      currentPage:1, //当前页,
+      pic_url:'',
+      view_count:0,
+      work_title:'',
+      currentBigPic:false,
+      txt:"", //评论内容
+      convertUTCTimeToLocalTime:convertUTCTimeToLocalTime
+    };
+  },
+    async mounted(){
+    //获取作品id
+    this.work_id = this.$route.query.id*1;
+
+    //回显
+    let res = await work_select_id({id:this.work_id});
+    this.pic_url = res.pic_url;
+    this.work_title = res.work_title;
+    this.view_count = res.view_count;
+
+    // 首次请求数据
+    let { count,list } = await comment_all({limit:this.limit,currentPage:this.currentPage,work_id:this.work_id});
+    this.total = count;
+    this.tableData = list;
+  },
+  methods:{
+    // 切换分页
+    async pageChange(size){
+      this.currentPage = size;
+      let { list } = await comment_all({limit:this.limit,currentPage:this.currentPage,work_id:this.work_id});
+      this.tableData = list;
+    },
+    async commit(){
+        comment_add({id:this.work_id,comment:this.txt});
+         this.txt = '';
+         let { count,list } = await comment_all({limit:this.limit,currentPage:this.currentPage,work_id:this.work_id});
+        this.total = count;
+        this.tableData = list;
+       
+    }
+  }
 }
 </script>
 
@@ -110,12 +167,30 @@ export default {
     .comment-content {
         margin-left: 60px;
         color: #4c4c4c;
-        font-size: 22px;
+        font-size: 18px;
+        word-break: break-all;
     }
 
     .page-wrapper {
         text-align: center;
         margin: 30px 0 80px;
     }
-   
+    
+    .works-detail-image{
+        display: flex;
+        justify-content: center;
+    }
+    .comment-btn{
+        width: 90px;
+        height: 30px;
+        line-height: 30px;
+        background: #b23e2f;
+        color: #fff;
+        display: block;
+        text-align: center;
+        letter-spacing: 5px;
+        margin-top:20px; 
+        float: right;
+        cursor: pointer;
+    }
 </style>
