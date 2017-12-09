@@ -46,7 +46,6 @@
                         <el-carousel
                             class="photo-shows2-content"
                             height="200px"
-                            width='580px';
                         >
                             <el-carousel-item v-for="item in 4" :key="item">
                                 <h3> 轮播图{{item}}</h3>
