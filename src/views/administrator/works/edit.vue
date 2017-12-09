@@ -129,7 +129,7 @@ export default {
             })
              return false
         }
-        if(type != ' image/jpeg ' ||  type != 'image/jpg' || type != 'image/png' ){
+        if(type != ' image/jpeg ' &&  type != 'image/jpg' && type != 'image/png' ){
             Message.error({
                  message: "文件格式不对，请重新选择！"
             })

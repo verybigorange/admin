@@ -47,6 +47,10 @@ module.exports = {
         resolve('./node_modules/swiper/dist/js/swiper.esm.bundle.js'),
         resolve('./node_modules/dom7/dist/dom7.modular.js'),
         resolve('static/js/0.8f488fa28072d981f5b7.js'),
+        resolve('./node_modules/_dom7@2.0.1@dom7/dist/dom7.modular.js'),
+        resolve('static/js/'),
+        resolve('./node_modules/_swiper@4.0.7@swiper/dist/js/swiper.esm.bundle.js'),
+        // [./node_modules/_swiper@4.0.7@swiper/dist/js/swiper.esm.bundle.js:15,0][static/js/0.f80ef48f02bc74d7ff3d.js:6634,4]
       ]
       },
       {
