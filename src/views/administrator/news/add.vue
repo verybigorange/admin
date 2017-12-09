@@ -4,10 +4,30 @@
     
     <h3 class="title">添加新闻</h3>
     <div class="main">
+        <div class="box">
+                    <p>新闻封面：</p>
+                    <div class="content">
+                        <el-upload
+                        class="upload-demo"
+                        action="/api/upload/"
+                        :on-success="handleSuccess"
+                        :on-remove="handleRemove"
+                        :file-list="fileList"
+                        list-type="picture"
+                        :limit='1'>
+                        <el-button size="small" type="primary">点击上传封面图片</el-button>
+                        <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+                    </el-upload>
+                    </div>
+                
+            </div>
+
           <div class="box">
             <p>新闻标题：</p>
             <el-input type="text" placeholder="请输入新闻标题" v-model="title"></el-input>
           </div>
+
+          
 
           <div class="box">
               <p>新闻发布的日期：</p>
@@ -53,11 +73,13 @@
 <script>
 import UE from "components/ue/ue.vue";
 import { newsAdd } from 'api/news';
+import { delete_pic } from 'api/works';
 
 export default {
   components: { UE },
   data() {
     return {
+      fileList: [], //回显用的
       defaultMsg: "",
       config: {
         initialFrameWidth: null,
@@ -66,7 +88,9 @@ export default {
       ue1: "ue1", // 不同编辑器必须不同的id
       title: "", //新闻标题
       content: "", //新闻内容
-      date: "" //新闻发布的日期
+      date: "" ,//新闻发布的日期
+      pic_name:"", //新闻封面的图片的名称
+      url:"" //新闻封面图的路径
     };
   },
   methods: {
@@ -74,8 +98,24 @@ export default {
       let content = this.$refs.ue.getUEContent(); // 调用子组件方法
       let plainText =  this.$refs.ue.getContentTxt(); //获得纯文本
   
-      newsAdd({title:this.title,date:this.date,content,plainText});
-    }
+      newsAdd({
+        title:this.title
+        ,date:this.date,
+        content,plainText,
+        pic_name:this.pic_name,
+        url:this.url
+        });
+    },
+    handleSuccess(data) {
+        this.url = data;
+        this.pic_name = data.replace('/api/static/img/','');
+    },
+    handleRemove() {
+        //删除图片
+        delete_pic({pic_name:this.pic_name});
+        this.url = "";
+        this.pic_name = "";
+    },
   }
 };
 </script>

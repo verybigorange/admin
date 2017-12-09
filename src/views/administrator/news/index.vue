@@ -25,7 +25,7 @@
         :index="index"
       >
         <template slot-scope="scope">
-            <el-button type="danger" size="mini" @click="handleDelete(scope.row.news_id,scope.$index)">删除</el-button>
+            <el-button type="danger" size="mini" @click="handleDelete(scope.row.news_id,scope.row.pic_name,scope.$index)">删除</el-button>
             <el-button type="info" size="mini" @click="handleEdit(scope.row.news_id)">编辑</el-button>
             <el-button type="success" size="mini" @click="handleDetail(scope.row.news_id)">详情</el-button>
         </template>
@@ -77,9 +77,9 @@ export default {
       this.$router.push("/admin/newsEdit?id="+id);
     },
     //新闻删除
-    async handleDelete(id,index){
+    async handleDelete(id,pic_name,index){
       // 删除后返回新数据
-      let res = await delete_news({id});
+      let res = await delete_news({id,pic_name});
       if(res == 1){
          this.total--;
          this.tableData.splice(index,1);
