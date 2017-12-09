@@ -22,11 +22,8 @@
 </template>
 
 <script>
-import NavGations from '../common/NavGations'
 export default {
-    components: {
-        NavGations
-    }
+    name: 'profile'
 }
 </script>
 
