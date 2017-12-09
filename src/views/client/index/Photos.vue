@@ -11,7 +11,7 @@
         <div class="photos-content clearfix">
             <div class="photo-wrapper pull-left" v-for="(item,index) in photoList" :key="index" >
                 <img class="photo-pic" :src="item.pic_url" alt="照片未加载成功" @click="currentBigPic=index">
-                <p style="color:#b23e2f;text-align:center;">{{item.pic_title}}</p>
+                <p style="color:#b23e2f;text-align:center;" class="photo_title">{{item.pic_title}}</p>
                 <div class='big-pic' v-show='currentBigPic==index' @click='currentBigPic=-1'>
                     <img :src="item.pic_url" alt="图片未加载成功">
                 </div>
@@ -81,6 +81,13 @@ export default {
         background-size: 100px;
         overflow: hidden;
         padding: 15px 4.5px
+    }
+    .photo_title{
+        overflow: hidden;
+        width: 84%;
+        margin: 0 auto;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
     .photo-wrapper {
         cursor: pointer;

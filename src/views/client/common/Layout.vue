@@ -88,7 +88,7 @@ export default {
     ul {
         width: 750px;
         list-style: none;
-        font-size: 24px;
+        font-size: 20px;
         overflow: hidden;
         float: right;
         & > li {

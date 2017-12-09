@@ -1,7 +1,7 @@
 <template>
    <header>
       <section class="index-banner">
-        <img style="width: 100%" :src="require('assets/img/banner_01.jpg')" alt="banner">
+        <img style="width: 100%;height:270px;" :src="require('assets/img/banner_01.jpg')" alt="banner">
       </section>
       <nav class="index-nav-bar">
         <ul class="index-nav-content clearfix" @click="navChange">
@@ -34,10 +34,10 @@ export default {
     overflow: hidden;
   }
   .index-nav-bar{
-    height: 60px;
+    height: 40px;
     background-image: url('../../../assets/img/index_nav_bk.jpg');
     background-size: 100px;
-    line-height: 60px;
+    line-height: 40px;
     text-align: center;
     margin-top: 20px;
     border-bottom: 8px solid #b23e2f;
@@ -52,8 +52,8 @@ export default {
   li.nav-item{
     float: left;
     width: 150px;
-    height: 60px;
-    font-size: 30px;
+    height: 40px;
+    font-size: 20px;
     color: #b23e2f;
     cursor: pointer;
     &.active {
