@@ -1,51 +1,41 @@
 <template>
     <div class="container">
         <div class="center">
-            <h5>关于何笑勤，你最想了解的几个问题</h5>
-            <p class="news-date">2017-10-11</p>
-            <div class="news-content">
-                <p style="text-align:center;text-indent:0">
-                    <img style="width:100%;" :src="require('assets/img/news_photo.png')" alt="新闻照片">
-                </p>
-                <p>
-                    字默舟，生于一九五六年，四川洪雅人。中原书画院研究员，眉山地区美协会
-                    员。　八岁开始学画，早年曾受画坛前辈钱松岩、李琼玖等先生的指教。自学三十
-                    余年深入传统的研修，并把现代精神与笔墨融合其中不断的求索，勤奋笔耕，力求
-                    突破与创新
-                </p>
-                <p>
-                    字默舟，生于一九五六年，四川洪雅人。中原书画院研究员，眉山地区美协会
-                    员。　八岁开始学画，早年曾受画坛前辈钱松岩、李琼玖等先生的指教。自学三十
-                    余年深入传统的研修，并把现代精神与笔墨融合其中不断的求索，勤奋笔耕，力求
-                    突破与创新
-                </p>
-                <p>
-                    字默舟，生于一九五六年，四川洪雅人。中原书画院研究员，眉山地区美协会
-                    员。　八岁开始学画，早年曾受画坛前辈钱松岩、李琼玖等先生的指教。自学三十
-                    余年深入传统的研修，并把现代精神与笔墨融合其中不断的求索，勤奋笔耕，力求
-                    突破与创新
-                </p>
-                <p>
-                    字默舟，生于一九五六年，四川洪雅人。中原书画院研究员，眉山地区美协会
-                    员。　八岁开始学画，早年曾受画坛前辈钱松岩、李琼玖等先生的指教。自学三十
-                    余年深入传统的研修，并把现代精神与笔墨融合其中不断的求索，勤奋笔耕，力求
-                    突破与创新
-                </p>
-                <p>
-                    字默舟，生于一九五六年，四川洪雅人。中原书画院研究员，眉山地区美协会
-                    员。　八岁开始学画，早年曾受画坛前辈钱松岩、李琼玖等先生的指教。自学三十
-                    余年深入传统的研修，并把现代精神与笔墨融合其中不断的求索，勤奋笔耕，力求
-                    突破与创新
-                </p>
+            <h5>{{news_title}}</h5>
+            <p class="news-date">{{news_date}}</p>
+            <div class="news-content"  ref="content">
+                {{news_content}}     
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import { news_select_id } from 'api/news';
+
 export default {
-  name: "NewsContent"
+  name: "NewsContent",
+   async mounted(){
+    //获取作品id
+    this.news_id = this.$route.query.news_id*1;
+
+    //回显
+    let res = await news_select_id({id:this.news_id});
+    this.news_title = res.news_title;
+    this.news_date = res.news_date.substr(0,10)+" "+res.news_date.substr(11,8);
+    let {news_content} = res;
+    this.$refs.content.innerHTML =  news_content;
+  },
+  data() {
+    return {
+      news_id:-1,
+      news_title:"",
+      news_date:"",
+      news_content:""
+    };
+  },
 }
+
 </script>
 
 <style lang="less" scoped>

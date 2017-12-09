@@ -5,30 +5,38 @@
         <hr class="solid-hr-b" />
         <div class="clearfix">
             <h5 class="pull-left">相册</h5>
-            <span class="pull-right more">更多</span>
+            <span class="pull-right more" @click="$router.push('/album')" style="cursor:pointer">更多</span>
         </div>
         <hr class="dashed-hr-t" />
         <div class="photos-content clearfix">
-            <div class="photo-wrapper pull-left">
-                <h6>2017年照片</h6>
+            <div class="photo-wrapper pull-left" v-for="(item,index) in photoList" :key="index" >
+                <img class="photo-pic" :src="item.pic_url" alt="照片未加载成功" @click="currentBigPic=index">
+                <p style="color:#b23e2f;text-align:center;">{{item.pic_title}}</p>
+                <div class='big-pic' v-show='currentBigPic==index' @click='currentBigPic=-1'>
+                    <img :src="item.pic_url" alt="图片未加载成功">
+                </div>
             </div>
-            <div class="photo-wrapper pull-left">
-                <h6>2017年照片</h6>
-            </div>
-            <div class="photo-wrapper pull-left">
-                <h6>2017年照片</h6>
-            </div>
-            <div class="photo-wrapper pull-left">
-                <h6>2017年照片</h6>
-            </div>
+            
         </div>
     </div>
 
 </template>
 
 <script>
+import { photo_select } from 'api/photo';
+
 export default {
-  name: 'Photos'
+  name: 'Photos',
+  async mounted(){
+       let { list } = await photo_select({limit:4,currentPage:1});
+       this.photoList = list;
+  },
+  data(){
+      return {
+          currentBigPic:-1, // 当前显示的大图
+          photoList:[]
+      }
+  }
 }
 </script>
 
@@ -75,6 +83,7 @@ export default {
         padding: 15px 4.5px
     }
     .photo-wrapper {
+        cursor: pointer;
         background-color: #f5f5f5;
         width: 235px;
         height: 275px;
@@ -91,5 +100,11 @@ export default {
         text-align: center;
         line-height: 35px;
         margin: 10px 20px;
+    }
+    .photo-pic{
+        display: block;
+        width: 210px;
+        height: 200px;
+        margin:  20px auto;
     }
 </style>

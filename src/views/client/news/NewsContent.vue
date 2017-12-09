@@ -1,76 +1,30 @@
 <template>
     <div class="container">
         <div class="center">
-            <ul>
+            <!-- <ul>
                 <li class="news-type active">全部</li>
                 <li class="news-type">业界新闻</li>
-            </ul>
+            </ul> -->
             <div class="news-wrapper">
-                <div class="news-item clearfix">
+                <div class="news-item clearfix" v-for="(item,index) in tableData" :key="index" @click="$router.push('/news/detail?news_id='+item.news_id)" style="cursor:pointer">
                     <div class="news-banner pull-left">
-                        <img :src="require('assets/img/news_photo.png')" alt="新闻照片">
+                        <img :src="item.pic_url" alt="新闻照片">
                     </div>
                     <div class="news-content pull-right">
-                        <h5 class="news-title">关于何笑勤，你最想了解的几个问题</h5>
-                        <p class="news-date">2017-10-11</p>
+                        <h5 class="news-title">{{item.news_title}}</h5>
+                        <p class="news-date">{{item.news_date}}</p>
                         <p>
-                        字默舟，生于一九五六年，四川洪雅人。中原书画院研究员，眉山地区美协会
-                        员。　八岁开始学画，早年曾受画坛前辈钱松岩、李琼玖等先生的指教。自学三十
-                        余年深入传统的研修，并把现代精神与笔墨融合其中不断的求索，勤奋笔耕，力求
-                        突破与创新
-                        </p>
-                    </div>
-                </div>
-                <div class="news-item clearfix">
-                    <div class="news-banner pull-left">
-                        <img :src="require('assets/img/news_photo.png')" alt="新闻照片">
-                    </div>
-                    <div class="news-content pull-right">
-                        <h5 class="news-title">关于何笑勤，你最想了解的几个问题</h5>
-                        <p class="news-date">2017-10-11</p>
-                        <p>
-                        字默舟，生于一九五六年，四川洪雅人。中原书画院研究员，眉山地区美协会
-                        员。　八岁开始学画，早年曾受画坛前辈钱松岩、李琼玖等先生的指教。自学三十
-                        余年深入传统的研修，并把现代精神与笔墨融合其中不断的求索，勤奋笔耕，力求
-                        突破与创新
-                        </p>
-                    </div>
-                </div>
-                <div class="news-item clearfix">
-                    <div class="news-banner pull-left">
-                        <img :src="require('assets/img/news_photo.png')" alt="新闻照片">
-                    </div>
-                    <div class="news-content pull-right">
-                        <h5 class="news-title">关于何笑勤，你最想了解的几个问题</h5>
-                        <p class="news-date">2017-10-11</p>
-                        <p>
-                        字默舟，生于一九五六年，四川洪雅人。中原书画院研究员，眉山地区美协会
-                        员。　八岁开始学画，早年曾受画坛前辈钱松岩、李琼玖等先生的指教。自学三十
-                        余年深入传统的研修，并把现代精神与笔墨融合其中不断的求索，勤奋笔耕，力求
-                        突破与创新
-                        </p>
-                    </div>
-                </div>
-                <div class="news-item clearfix">
-                    <div class="news-banner pull-left">
-                        <img :src="require('assets/img/news_photo.png')" alt="新闻照片">
-                    </div>
-                    <div class="news-content pull-right">
-                        <h5 class="news-title">关于何笑勤，你最想了解的几个问题</h5>
-                        <p class="news-date">2017-10-11</p>
-                        <p>
-                        字默舟，生于一九五六年，四川洪雅人。中原书画院研究员，眉山地区美协会
-                        员。　八岁开始学画，早年曾受画坛前辈钱松岩、李琼玖等先生的指教。自学三十
-                        余年深入传统的研修，并把现代精神与笔墨融合其中不断的求索，勤奋笔耕，力求
-                        突破与创新
+                          {{item.news_plainText.substr(0,200)+'...'}}
                         </p>
                     </div>
                 </div>
                 <div class="page-wrapper news">
                         <el-pagination
-                            background=true
+                            :background=true
                             layout="prev, pager, next"
-                            :total="199"
+                            :page-size="limit"
+                            @current-change = 'pageChange'
+                            :total="total"
                         >
                         </el-pagination>
                 </div>
@@ -80,8 +34,35 @@
 </template>
 
 <script>
+import { news_select } from 'api/news';
+import { convertUTCTimeToLocalTime } from 'utils/index'
+
 export default {
-  name: "NewsContent"
+  name: "NewsContent",
+  async mounted(){
+    // 首次请求数据
+    let { count,list } = await news_select({limit:this.limit,currentPage:this.currentPage});
+    this.total = count;
+    this.tableData = list;
+  },
+  data(){
+    return {
+      index:0,//表格索引
+      tableData: [], //表格数据
+      limit:4,  //每页显示数量
+      total:0,  //总数
+      currentPage:1, //当前页,
+      convertUTCTimeToLocalTime:convertUTCTimeToLocalTime
+    }
+  },
+  methods:{
+       // 切换分页
+    async pageChange(size){
+      this.currentPage = size;
+      let { list } = await news_select({limit:this.limit,currentPage:this.currentPage});
+      this.tableData = list;
+    },
+  }
 }
 </script>
 

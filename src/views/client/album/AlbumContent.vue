@@ -1,16 +1,19 @@
 <template>
     <div class="center">
         <div class="photo-wrapper clearfix">
-            <div class="photo-item pull-left" v-for="(item,index) in data" :key='index' >
+            <div class="photo-item pull-left" v-for="(item,index) in data" :key='index'>
                 <div class="photo-content">
-                    <img :src="item.pic_url" alt="图片">
+                    <img :src="item.pic_url" alt="图片"  @click="currentBigPic=index">
                 </div>
                 <p class="photo-desc">{{item.pic_title}}</p>
+                <div class='big-pic' v-show='currentBigPic==index' @click='currentBigPic=-1'>
+                    <img :src="item.pic_url" alt="图片未加载成功">
+                </div>
             </div>
         </div>
             <div class="page-wrapper album">
                     <el-pagination
-                        background=true
+                        :background=true
                         layout="prev, pager, next"
                         :page-size="limit"
                         :total="total"

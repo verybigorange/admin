@@ -132,21 +132,6 @@ export default {
         right:5px;
         top:5px;
       }
-      .big-pic{
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, .8);
-        z-index: 998;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        left: 0;
-        top:0;
-        >img{
-           z-index: 998;
-        }
-      }
     }
   }
 }
