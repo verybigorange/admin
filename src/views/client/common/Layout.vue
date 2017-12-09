@@ -3,7 +3,7 @@
         <div class="nav-container">
                 <div class="center">
                     <ul class="clearfix" @click="navChnage">
-                        <li v-for="(item,index) in navs" :class="{active: path.indexOf(item) !== -1}" :data-index="item" :key="index">{{pathMaps[item].title}}</li>
+                        <li v-for="(item,index) in navs" :class="{active: item != '/' && path.indexOf(item) !== -1}" :data-index="item" :key="index">{{pathMaps[item].title}}</li>
                     </ul>
                 </div>
         </div>
@@ -21,7 +21,6 @@ export default {
     data() {
         return {
             navs: ['/','/profile','/works','/album','/news','/contact'],
-            // path: this.$route.path,
             pathMaps: {
                 '/': {
                     title: '首页'
