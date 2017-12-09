@@ -21,11 +21,20 @@
                 </section>
             </section>
             <section class="shows pull-right">
-                <el-carousel class="photo-shows1">
-                    <el-carousel-item v-for="item in 4" :key="item">
-                        <h3> 轮播图{{item}}</h3>
+                <el-carousel
+                    class="photo-shows1"
+                    :interval="4000"
+                    type="card"
+                    height="360px"
+                >
+                    <el-carousel-item
+                        v-for="(img, index)  in imgArrs"
+                        :key="index"
+                    >
+                        <img style="height:100%" :src="img.pic_url" :alt="img.work_title">
                     </el-carousel-item>
                 </el-carousel>
+                <!-- <h5 class="wrks-title-1">{{img.work_title}}</h5> -->
                 <div class="photo-shows2">
                     <hr class="solid-line"/>
                     <div class="clearfix">
@@ -34,7 +43,11 @@
                     </div>
                     <div class="photo-shows2-container">
                         <hr class="dash-line"/>
-                        <el-carousel class="photo-shows2-content">
+                        <el-carousel
+                            class="photo-shows2-content"
+                            height="200px"
+                            width='580px';
+                        >
                             <el-carousel-item v-for="item in 4" :key="item">
                                 <h3> 轮播图{{item}}</h3>
                             </el-carousel-item>
@@ -47,8 +60,21 @@
 </template>
 
 <script>
+import { work_home_show } from 'api/works'
 export default {
-  name: 'Profile'
+    name: 'Profile',
+    data() {
+        return {
+            imgArrs: [], //图片数据,
+        }
+    },
+    async mounted() {
+        this.imgArrs = await work_home_show()
+    },
+    methods: {
+        handleChangeShows1() {
+        }
+    }
 }
 </script>
 
@@ -143,8 +169,10 @@ export default {
     .photo-shows1 {
         height: 360px;
         width: 100%;
-        background-color: #f5f5f5;
+        background-color:rgba(255, 255, 255, 0.7);
+        overflow: hidden;
     }
+
     .photo-shows2 {
         height: 360px;
         width: 100%;
@@ -153,6 +181,16 @@ export default {
     .photo-shows2-container {
         background-image: url('../../../assets/img/index_nav_bk.jpg');
         background-size: 100px;
+        height: 100%;
+        width: 100%;
+    }
+    .photo-shows2-content {
+        width: 580px;
+        height: 200px;
+        margin-top: 40px;
+        margin-left: 55px;
+        background-color: #fff;
+        overflow: hidden;
     }
     
     .more {
@@ -165,5 +203,36 @@ export default {
         text-align: center;
         line-height: 35px;
         margin: 10px 20px;
+    }
+</style>
+<style lang="less">
+    .photo-shows1>.el-carousel__indicators.el-carousel__indicators--outside {
+        position: relative;
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 690px;
+        left: 0;
+        top: -50px;
+        height: 50px;
+        text-align: right;
+        line-height: 50px;
+        &>li.el-carousel__indicator {
+            width: 15px;
+            height: 15px;
+            border: none;
+            padding: 0;
+            margin: 5px;
+            border-radius: 100%;
+            background-color: #eee;
+            &>.el-carousel__button {
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+            }
+            &.is-active {
+                &>.el-carousel__button {
+                    background-color: #b23e2f;
+                }
+            } 
+        }
     }
 </style>
