@@ -14,7 +14,7 @@
         </div>
         <div class="page-wrapper works">
             <el-pagination
-                background=true
+                :background=true
                 layout="prev, pager, next"
                 :total="total"
                 :page-size="limit"

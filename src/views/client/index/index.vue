@@ -1,30 +1,30 @@
 <template>
   <div class="index-container">
-    <Header/>
+    <head-content></head-content>
     <div class="main center-content">
       <Profile/>
       <Photos/>
       <News/>
     </div>
     <footer class="footer center-content"> 
-      <Footer/>
+      <Foot/>
     </footer>
   </div>
 </template>
 
 <script>
-import Header from './Header'
+import HeadContent from './HeadContent'
 import Profile from './Profile'
 import Photos from './Photos'
 import News from './News'
-import Footer from './Footer'
+import Foot from './Foot'
 export default {
   components: {
-    Header,
+    HeadContent,
     Profile,
     Photos,
     News,
-    Footer
+    Foot
   }
 }
 </script>
