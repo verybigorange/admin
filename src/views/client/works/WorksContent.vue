@@ -4,7 +4,7 @@
             <li v-for="(item, index) in types" class="works-type" :class="{active: type == item}" :key="index">{{item}}</li>
         </ul>
         <div class="works-content">
-            <div class="works-item" v-for="(item, index) in data" :key="index">
+            <div class="works-item" v-for="(item, index) in data" :key="index" @click="handleWorkClick(item)">
                 <img style="width: 100%" :src="item.pic_url" alt="作品">
                 <div class="works-desc">
                     <h6>《{{item.work_title}}》</h6>
@@ -64,6 +64,9 @@ export default {
             let type = e.target.textContent
             this.type = type
             this.pageChange.call(this, this.currentPage)
+        },
+        handleWorkClick(item) {
+            this.$router.push(`/works/detail?id=${item.work_id}`)
         }
     }
 }
@@ -150,8 +153,13 @@ export default {
         margin-bottom: 10px;
         margin-top: 8px;
         box-shadow: 0px 0px 10px #888888;
-        display: inline-block;
+        float: left;
         break-inside: avoid;
+        cursor: pointer;
+        &:hover {
+            width: 250px;
+            box-shadow: 1px 1px 12px #888888;
+        } 
     }
     .works-desc {
         background-color: #fff;
