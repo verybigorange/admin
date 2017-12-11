@@ -1,7 +1,7 @@
 <template>
   <div class="layout">
       <header class="header">
-          <span class="title pull-left"><i class="el-icon-menu" style="margin-right:10px;"></i>后台管理系统</span>
+          <span class="title pull-left"><i class="el-icon-menu" style="margin-right:10px;"></i>何笑勤画家网站后台管理系统</span>
           <div class="pull-right">
                <el-dropdown @command='handleCommand'>
                 <span class="el-dropdown-link">

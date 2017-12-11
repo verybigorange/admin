@@ -8,6 +8,10 @@
             <span class="login-item-title">新密码:</span>
             <el-input type="password" v-model="newPsd" placeholder="请输入新密码"></el-input>
         </div>
+        <div class="login-item">
+            <span class="login-item-title">确认新密码:</span>
+            <el-input type="password" v-model="comfirmNewPsd" placeholder="请输入新密码"></el-input>
+        </div>
         <div class="login-item" style="text-align:right">
             <el-button type="primary" @click="submit">提交</el-button>
         </div>
@@ -18,17 +22,26 @@
 <script>
 import changePsd from 'api/changePsd'
 import md5 from 'md5'
+import { Message } from 'element-ui';
 
 export default {
   data() {
     return {
       oldPsd: "",
-      newPsd: ""
+      newPsd: "",
+      comfirmNewPsd:""
     }
   },
   methods:{
       submit(){
-          changePsd({"oldPsd":md5(this.oldPsd),"newPsd":md5(this.newPsd)});
+        if(this.newPsd === this.comfirmNewPsd){
+           changePsd({"oldPsd":md5(this.oldPsd),"newPsd":md5(this.newPsd)});
+        }else{
+          Message.error({
+            message: "两次输入的新密码不一致！请重新输入！"
+          })
+        }
+         
       }
   }
 };
