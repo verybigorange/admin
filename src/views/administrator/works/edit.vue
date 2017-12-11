@@ -121,6 +121,7 @@ export default {
     //上传成功后的返回图片url地址
     handleSuccess(data) {
         this.url = data;
+        this.pic_name = data.replace('/api/static/img/','');
     },
     handleRemove() {
          //删除图片
