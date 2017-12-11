@@ -89,8 +89,12 @@ export default {
           label: "花鸟"
         },
         {
-          value: "临摹",
-          label: "临摹"
+          value: "临摹对比",
+          label: "临摹对比"
+        },
+         {
+          value: "长江三峡",
+          label: "长江三峡"
         }
       ],
       value: "", //下拉

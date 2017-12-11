@@ -136,9 +136,13 @@ export default {
         value: '花鸟',
         label: '花鸟'
       }, {
-        value: '临摹',
-        label: '临摹'
-      }],
+          value: "临摹对比",
+          label: "临摹对比"
+        },
+        {
+          value: "长江三峡",
+          label: "长江三峡"
+        }],
         type: '全部'
     };
   }
