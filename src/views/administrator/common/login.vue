@@ -4,11 +4,11 @@
         <p class="title">欢迎来到何笑勤网站后台管理系统</p>
         <div class="login-item">
           <span class="login-item-title">账号:</span>
-        <el-input type="text" v-model="username"></el-input>
+        <el-input type="text" v-model="username" placeholder="请输入管理员账号"></el-input>
         </div>
       <div class="login-item">
         <span class="login-item-title">密码:</span>
-        <el-input type="password" v-model="password"></el-input>
+        <el-input type="password" v-model="password" placeholder="请输入管理员密码"></el-input>
       </div>
       <div class="login-item" style="text-align:right">
           <el-button type="success" @click="submit" class="btn-submit">登录</el-button>
@@ -54,7 +54,7 @@ export default {
   text-align: center;
   margin-bottom: 40px;
   font-size:36px;
-  color: #fff;
+  color: #000;
 }
 .login-box .login-item {
   margin-bottom: 20px;
@@ -62,8 +62,8 @@ export default {
 .login-box .login-item .login-item-title{
     margin-bottom: 10px;
     display: block;
-    font-size: 16px;
-    color:#fff;
+    font-size:20px;
+    color:#000;
 }
 .btn-submit{
   letter-spacing: 3px;

@@ -51,12 +51,16 @@ export default {
 <style scoped>
 .login-box {
   width: 600px;
+  background: rgba(157,157,157,.5);
   /* margin: 40px auto;
   border-radius: 8px; */
-  height: 300px;
+  height: 400px;
   position: absolute;
   top: calc(50% - 300px);
   left: calc(50% - 300px);
+  box-sizing: border-box;
+  padding: 50px 50px; 
+  color:#000;
 }
 .login-box .title {
   text-align: center;
@@ -71,4 +75,5 @@ export default {
   margin-bottom: 10px;
   display: block;
 }
+
 </style>

@@ -1,9 +1,10 @@
 <template>
   <div>
      <el-button type="deflaut" class="pull-right" @click="addWork">添加新闻</el-button>
+     <div style="clear:both"></div>
        <el-table
       :data="tableData"
-      style="width: 100%;margin-top:30px;">
+      style="width: 100%;margin-top:30px;border:2px solid #ccc;">
       <el-table-column
         prop="news_title"
         label="标题"
@@ -32,7 +33,7 @@
       </el-table-column>
     </el-table>
     <el-pagination
-    style="margin-top:20px;"
+    style="margin-top:20px;border:1px solid #ccc;"
     class="pull-right"
     layout="prev, pager, next"
     :page-size="limit"

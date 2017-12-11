@@ -19,7 +19,7 @@
           <slider></slider>
         </aside>
         <section class="main-content">
-            <div style="padding:20px 50px; ">
+            <div class="content">
                  <router-view></router-view>
             </div>
         </section>
@@ -59,7 +59,7 @@ export default {
 .header {
   height: 50px;
   line-height: 50px;
-  background: #409eff;
+  background: #4f4e4e;
   color: #fff;
   padding: 0 50px;
 }
@@ -88,6 +88,16 @@ export default {
 
 .main-content {
   flex: 1;
+}
+
+.main-content .content{
+  padding:20px 50px 0px;
+  height: 100%;
+  /* width: 100%; */
+  overflow-y: auto;
+  background: url(../../../assets/img/adminbg2.jpg) no-repeat;
+  background-size:cover; 
+  box-sizing: border-box;
 }
 
 .el-dropdown{
