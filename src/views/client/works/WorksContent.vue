@@ -44,7 +44,7 @@ export default {
             total:0,  //总数
             currentPage:1, //当前页,
             data: [], //作品数据,
-            types: ['全部', '山水', '花鸟', '人物', '临摹']
+            types: ['全部', '长江三峡', '山水', '花鸟', '人物', '临摹对比']
         }
     },
     methods: {
@@ -118,8 +118,8 @@ export default {
         padding: 0;
         &>li {
             float: left;
-            width: 60px;
             height: 30px;
+            padding: 0 10px;
             line-height: 30px;
             border: solid 1px #b23e2f;
             color: #b23e2f;

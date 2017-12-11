@@ -62,6 +62,9 @@
                 </div>
             </section>
       </div>
+      <div class="cjsx">
+          <img :src="require('assets/img/cjsx0.jpg')" alt="长江三峡卷轴" />
+      </div>
   </article>
 </template>
 
