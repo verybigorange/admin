@@ -11,10 +11,11 @@
                         :on-success="handleSuccess"
                         :on-remove="handleRemove"
                         :file-list="fileList"
+                        :before-upload="beforeUpload"
                         list-type="picture"
                         :limit='1'>
                         <el-button size="small" type="primary">点击上传作品图片</el-button>
-                        <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+                        <div slot="tip" class="el-upload__tip">只能上传jpg/jpeg/png图片，且不超过500kb</div>
                     </el-upload>
                     </div>
                 
@@ -70,6 +71,7 @@
 <script>
 
 import { work_select_id,work_edit,delete_pic } from 'api/works';
+import { Message } from 'element-ui'
 
 export default {
   async mounted(){
@@ -122,6 +124,23 @@ export default {
     };
   },
   methods: { 
+    beforeUpload(file){
+        let size = file.size;
+        let type = file.type;
+        if((size/1024)>500){
+            Message.error({
+                    message: "图片太大，请压缩后上传！"
+            });
+            return false
+        }
+
+        if(type != 'image/jpeg' && type != 'image/jpg' && type != 'image/png'){
+            Message.error({
+                    message: "格式不正确，请上传jpg、jpeg、png格式的图片！"
+            });
+            return false
+        }
+    },    
     //上传成功后的返回图片url地址
     handleSuccess(data) {
         this.url = data;

@@ -20,7 +20,7 @@
         </div>
      </div>
     <el-pagination
-      style="margin-top:40px;border:1px solid #ccc;"
+      style="margin-top:40px;"
       class="pull-right"
       layout="prev, pager, next"
       :page-size="limit"

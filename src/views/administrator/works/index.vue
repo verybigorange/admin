@@ -58,7 +58,7 @@
       </el-table-column>
     </el-table>
     <el-pagination
-    style="margin-top:20px;border:1px solid #ccc;"
+    style="margin-top:20px;"
     class="pull-right"
     layout="prev, pager, next"
     :page-size="limit"

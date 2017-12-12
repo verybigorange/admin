@@ -3,6 +3,9 @@
       <header class="header">
           <span class="title pull-left"><i class="el-icon-menu" style="margin-right:10px;"></i>何笑勤画家网站后台管理系统</span>
           <div class="pull-right">
+              <span style="margin-right:20px;cursor:pointer;font-size:14px;" @click="$router.push('/')">
+                <i class="el-icon-location-outline"></i><span style="margin-left:5px;">回到网站首页</span>
+              </span>
                <el-dropdown @command='handleCommand'>
                 <span class="el-dropdown-link">
                   管理员<i class="el-icon-arrow-down el-icon--right"></i>

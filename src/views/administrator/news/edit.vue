@@ -7,16 +7,17 @@
          <div class="box">
                     <p>新闻封面：</p>
                     <div class="content">
-                        <el-upload
+                         <el-upload
                         class="upload-demo"
                         action="/api/upload/"
                         :on-success="handleSuccess"
                         :on-remove="handleRemove"
                         :file-list="fileList"
+                        :before-upload="beforeUpload"
                         list-type="picture"
                         :limit='1'>
-                        <el-button size="small" type="primary">点击上传封面图片</el-button>
-                        <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+                        <el-button size="small" type="primary">点击上传作品图片</el-button>
+                        <div slot="tip" class="el-upload__tip">只能上传jpg/jpeg/png图片，且不超过500kb</div>
                     </el-upload>
                     </div>
                 
@@ -72,6 +73,7 @@
 import UE from "components/ue/ue.vue";
 import { news_select_id,news_edit } from 'api/news';
 import { delete_pic } from 'api/works';
+import { Message } from 'element-ui'
 
 export default {
   components: { UE },
@@ -109,6 +111,23 @@ export default {
     };
   },
   methods: {
+    beforeUpload(file){
+       let size = file.size;
+       let type = file.type;
+       if((size/1024)>500){
+            Message.error({
+                    message: "图片太大，请压缩后上传！"
+            });
+            return false
+       }
+
+       if(type != 'image/jpeg' && type != 'image/jpg' && type != 'image/png'){
+           Message.error({
+                    message: "格式不正确，请上传jpg、jpeg、png格式的图片！"
+            });
+            return false
+       }
+    },    
     submit() {
       this.content = this.$refs.ue.getUEContent(); // 调用子组件方法
       this.plainText =  this.$refs.ue.getContentTxt(); //获得纯文本

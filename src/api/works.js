@@ -62,7 +62,7 @@ export async function delete_pic(params) {
             message: "删除成功",
             type: 'success'
         })
-    } else {
+    }else if(data == '0'){
         Message.error({
             message: "删除失败！"
         })
