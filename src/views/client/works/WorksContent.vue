@@ -31,15 +31,17 @@ export default {
     name: "WorksContent",
     components: {
     },
-    async mounted() {
-         // 首次请求数据
-        let { count,list } = await work_select({limit:this.limit,currentPage:this.currentPage});
-        this.total = count;
-        this.data = list;
+    mounted() {
+        //首次请求数据
+        let type = this.$route.query.type
+        if (!type) {
+            this.$router.push(`/works?type=全部`)
+        }
+        this.pageChange.call(this, this.currentPage)
     },
     data() {
         return {
-            type: '全部', //作品类型
+            // type: '全部', //作品类型
             limit:9,  //每页显示数量
             total:0,  //总数
             currentPage:1, //当前页,
@@ -52,7 +54,7 @@ export default {
             this.currentPage = pageNum
 
             let response
-            if (this.type === '全部') {
+            if (this.type === '全部' || (!this.type)) {
                 response = await work_select({limit:this.limit, currentPage:this.currentPage})
             } else {
                 response = await work_select({limit:this.limit, currentPage:this.currentPage, type:this.type})
@@ -62,11 +64,18 @@ export default {
         },
         handleTypeChange(e) {
             let type = e.target.textContent
-            this.type = type
+            // this.type = type
+            this.$router.push(`/works?type=${type}`)
             this.pageChange.call(this, this.currentPage)
         },
         handleWorkClick(item) {
             this.$router.push(`/works/detail?id=${item.work_id}`)
+        }
+    },
+    computed: {
+        type() {
+            let type = decodeURIComponent(this.$route.query.type)
+            return type ? type : '全部'
         }
     }
 }

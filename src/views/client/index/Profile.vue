@@ -62,8 +62,8 @@
                 </div>
             </section>
       </div>
-      <div class="cjsx">
-          <img :src="require('assets/img/cjsx0.jpg')" alt="长江三峡卷轴" />
+      <div class="cjsx" @click="handleCjsxClick">
+          <img :src="require('assets/img/cjsx_1.jpg')" alt="长江三峡卷轴" />
       </div>
   </article>
 </template>
@@ -108,6 +108,9 @@ export default {
         },
         handleMoreClick() {
             this.$router.push(`/works`)
+        },
+        handleCjsxClick() {
+            this.$router.push('/works?type=长江三峡')
         }
     },
     computed: {
@@ -120,6 +123,12 @@ export default {
 
 
 <style lang="less" scoped>
+    .cjsx {
+        cursor: pointer;
+        & img {
+            width: 100%;
+        }
+    }
     .wrks-title-1 {
         position: absolute;
         top: 308px;
