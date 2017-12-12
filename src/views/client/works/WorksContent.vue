@@ -157,8 +157,7 @@ export default {
         break-inside: avoid;
         cursor: pointer;
         &:hover {
-            width: 250px;
-            box-shadow: 1px 1px 12px #888888;
+            box-shadow: 3px 3px 10px #888888;
         } 
     }
     .works-desc {
