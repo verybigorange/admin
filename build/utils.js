@@ -32,7 +32,7 @@ exports.cssLoaders = function (options) {
   function generateLoaders (loader, loaderOptions) {
     const loaders = [cssLoader]
     if (loader) {
-      loader.push(postcssLoader)
+      loaders.push(postcssLoader)
       loaders.push({
         loader: loader + '-loader',
         options: Object.assign({}, loaderOptions, {
