@@ -26,7 +26,7 @@
             <div class="item">
                 <p>照片名称：</p>
                 <div class="content">
-                    <el-input type="text" v-model="title" placeholder="请输入照片名称"></el-input>
+                    <el-input type="text" v-model="title" placeholder="请输入照片名称" :maxlength=20></el-input>
                 </div>
             </div>   
 

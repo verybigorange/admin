@@ -25,7 +25,7 @@
 
           <div class="box">
             <p>新闻标题：</p>
-            <el-input type="text" placeholder="请输入新闻标题" v-model="title"></el-input>
+            <el-input type="text" placeholder="请输入新闻标题" v-model="title" :maxlength=30></el-input>
           </div>
 
           
@@ -44,7 +44,7 @@
             <UE :defaultMsg=defaultMsg :config=config :id=ue1 ref="ue"></UE>
             <!-- <UE :defaultMsg=defaultMsg :config=config :id=ue2 ref="ue2"></UE> -->
           </div>
-           <el-button type="primary" class="pull-right" @click="submit()">提交</el-button>
+           <el-button type="success" class="pull-right" @click="submit()" style="margin-bottom:30px;">提交</el-button>
     </div>
     
     

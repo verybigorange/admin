@@ -39,7 +39,7 @@
             <div class="item">
                 <p>作品名称：</p>
                 <div class="content">
-                    <el-input type="text" v-model="title" placeholder="请输入作品名称"></el-input>
+                    <el-input type="text" v-model="title" placeholder="请输入作品名称" :maxlength=20></el-input>
                 </div>
                 
             </div>   
@@ -55,7 +55,7 @@
             <div class="item">
                 <p>作品浏览量:</p>
                 <div class="content">
-                    <el-input type="" v-model.number="count" placeholder="请输入作品浏览量"></el-input>
+                    <el-input type="text" v-model="count" placeholder="请输入作品浏览量" @keyup.native="handleKeyup"></el-input>
                 </div>
             </div>  
             
@@ -144,8 +144,12 @@ export default {
             count:this.count,
             pic_name:this.pic_name
         })
+    },
+    handleKeyup(){
+        this.count = this.count.replace(/^0|\D+/g,'');
     }
-  }
+  },
+ 
 };
 </script>
 
