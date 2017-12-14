@@ -11,12 +11,12 @@
             <div v-for="(item,index) in newsList" :key="index">
                 <hr class="solid-hr-t" />
                 <div class="news-item clearfix" >
-                    <div class="news-item-l pull-left">
+                    <div class="news-item-l">
                         <h6>{{item.news_title}}</h6>
                         <p class="news-date">{{convertUTCTimeToLocalTime(item.news_date)}}</p>
                         <p class="news-content">{{item.news_plainText.substr(0,200)+'...'}}</p>
                     </div>
-                    <div class="news-item-r pull-right">
+                    <div class="news-item-r">
                         <span class="news-detail"  @click="$router.push('/news/detail?news_id='+item.news_id)">详细</span>
                     </div>
                 </div>
@@ -99,6 +99,12 @@ export default {
     }
     .news-item-l {
         width: 860px;
+        display: inline-block;
+    }
+    .news-item-r {
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 70px;
     }
     .news-detail {
         display: block;
