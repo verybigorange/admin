@@ -22,7 +22,7 @@
                 <img style="width: 100%" :src="item.pic_url" alt="作品">
                 <div class="works-desc">
                     <h6>《{{item.work_title}}》</h6>
-                    <p><span class="works-view"><i class="el-icon-view"></i>{{item.view_count}}</span><span class="works-edit"><i class="el-icon-edit-outline"></i>17</span></p>
+                    <p><span class="works-view"><i class="el-icon-view"></i>{{item.view_count}}</span></p>
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
                 layout="prev, pager, next"
                 :total="total"
                 :page-size="limit"
-                @@current-change = "pageChange"
+                @current-change = "pageChange"
             >
             </el-pagination>
         </div>
