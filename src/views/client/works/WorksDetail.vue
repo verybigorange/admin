@@ -81,14 +81,16 @@ export default {
       let { list } = await comment_all({limit:this.limit,currentPage:this.currentPage,work_id:this.work_id});
       this.tableData = list;
     },
-    async commit(){
+    commit(){
         if(!this.txt) return
-        comment_add({id:this.work_id,comment:this.txt});
-        let { count,list } = await comment_all({limit:this.limit,currentPage:this.currentPage,work_id:this.work_id});
-        this.txt = '';
-        this.total = count;
-        this.tableData = list;
-       
+        let res = comment_add({id:this.work_id,comment:this.txt}).then(res=>{
+             console.log(res)
+            if(res != '0'){
+                this.total ++;
+                this.tableData.push(res);
+                this.txt = '';
+            }
+        })
        
     }
   }
