@@ -246,7 +246,7 @@ export default {
         height: 720px;
         overflow: hidden;
         display: inline-block;
-        margin-left: 19px;
+        margin-left: 17px;
     }
 
     .photo-shows1 {

@@ -144,7 +144,7 @@ export default {
     .news-content {
         width: 595px;
         display: inline-block;
-        margin-left: 24px;
+        margin-left: 22px;
         // margin-top: 0;
     }
     .news-date {
