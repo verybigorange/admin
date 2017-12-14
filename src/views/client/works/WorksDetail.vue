@@ -84,10 +84,11 @@ export default {
     async commit(){
         if(!this.txt) return
         comment_add({id:this.work_id,comment:this.txt});
-        this.txt = '';
         let { count,list } = await comment_all({limit:this.limit,currentPage:this.currentPage,work_id:this.work_id});
+        this.txt = '';
         this.total = count;
         this.tableData = list;
+       
        
     }
   }
