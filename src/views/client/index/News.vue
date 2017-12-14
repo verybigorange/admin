@@ -124,7 +124,7 @@ export default {
         text-align: center;
         line-height: 35px;
         margin-top: 10px;
-        margin-left: 780px;
+        margin-left: 778px;
         display: inline-block;
     }
 </style>

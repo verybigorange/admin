@@ -1,7 +1,7 @@
 <template>
     <div class="center">
-        <div class="photo-wrapper clearfix">
-            <div class="photo-item pull-left" v-for="(item,index) in data" :key='index'>
+        <div class="photo-wrapper">
+            <div class="photo-item" v-for="(item,index) in data" :key='index'>
                 <div class="photo-content">
                     <img :src="item.pic_url" alt="图片"  @click="currentBigPic=index">
                 </div>
@@ -84,11 +84,14 @@ export default {
     .photo-wrapper {
         width: 1032px;
         margin-left: -8px;
+        font-size: 0;
     }
     .photo-item {
         width: 250px;
         height: 300px;
         margin-left: 8px;
+        display: inline-block;
+        font-size: 0;
         &>.photo-content {
             width: 220px;
             height: 220px;

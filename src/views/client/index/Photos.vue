@@ -8,8 +8,8 @@
             <span class="more" @click="$router.push('/album')" style="cursor:pointer">更多</span>
         </div>
         <hr class="dashed-hr-t" />
-        <div class="photos-content clearfix">
-            <div class="photo-wrapper pull-left" v-for="(item,index) in photoList" :key="index" >
+        <div class="photos-content">
+            <div class="photo-wrapper" v-for="(item,index) in photoList" :key="index" >
                 <img class="photo-pic" :src="item.pic_url" alt="照片未加载成功" @click="currentBigPic=index">
                 <p style="color:#b23e2f;text-align:center;" class="photo_title">{{item.pic_title}}</p>
                 <div class='big-pic' v-show='currentBigPic==index' @click='currentBigPic=-1'>
@@ -81,7 +81,8 @@ export default {
         background-image: url('../../../assets/img/index_nav_bk.jpg');
         background-size: 100px;
         overflow: hidden;
-        padding: 15px 4.5px
+        padding: 15px 4.5px;
+        font-size: 0;
     }
     .photo_title{
         overflow: hidden;
@@ -96,6 +97,8 @@ export default {
         width: 235px;
         height: 275px;
         margin: 15px 0 15px 15px;
+        display: inline-block;
+        font-size: 0;
     }
 
     .more {
@@ -109,7 +112,7 @@ export default {
         line-height: 35px;
         display: inline-block;
         margin: 10px 20px;
-        margin-left: 835px;
+        margin-left: 833px;
     }
     .photo-pic{
         display: block;
