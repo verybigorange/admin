@@ -4,7 +4,7 @@
                 <div class="center">
                     <el-menu
                         @select="navChnage"
-                        router=true
+                        :router=true
                         class="nav-menu"
                     >
                         <el-menu-item

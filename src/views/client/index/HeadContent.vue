@@ -5,8 +5,7 @@
       </section>
       <nav class="index-nav-bar">
         <el-menu
-            @select="navChnage"
-            router=true
+            :router=true
             class="index-nav-content clearfix"
         >
             <el-menu-item
