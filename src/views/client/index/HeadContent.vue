@@ -90,6 +90,7 @@ export default {
     float: left;
     width: 150px;
     height: 40px;
+    line-height: 40px;
     font-size: 20px;
     color: #b23e2f;
     cursor: pointer;

@@ -3,7 +3,6 @@
         <div class="nav-container">
                 <div class="center">
                     <el-menu
-                        @select="navChnage"
                         :router=true
                         class="nav-menu"
                     >
@@ -77,14 +76,6 @@ export default {
         }
     },
     methods: {
-        navChnage(e) {
-            // let index = e.target.dataset.index
-            // this.$router.push(index)
-            // this.activeNav = {
-            //     path: index,
-            //     title: e.target.textContent
-            // }
-        }
     },
 }
 </script>
@@ -92,6 +83,7 @@ export default {
 <style lang="less" scoped>
     .nav-menu {
         background-color: transparent;
+        padding: 20px;
     }
     .layout-container {
         background-color: #f6f0e2;
@@ -115,6 +107,7 @@ export default {
             color: #666;
             text-align: center;
             line-height: 45px;
+            font-size: 18px;
             cursor: pointer;
             &.active {
                 background-color: #b23e2f;
