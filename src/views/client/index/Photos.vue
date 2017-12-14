@@ -4,8 +4,8 @@
         <h4>Photos</h4>
         <hr class="solid-hr-b" />
         <div class="clearfix">
-            <h5 class="pull-left">相册</h5>
-            <span class="pull-right more" @click="$router.push('/album')" style="cursor:pointer">更多</span>
+            <h5>相册</h5>
+            <span class="more" @click="$router.push('/album')" style="cursor:pointer">更多</span>
         </div>
         <hr class="dashed-hr-t" />
         <div class="photos-content clearfix">
@@ -59,7 +59,8 @@ export default {
     h5 {
         font-size: 28px;
         color: #b23e2f;
-        margin: 12px 20px
+        margin: 12px 20px;
+        display: inline-block;
     }
     hr {
         border: none;
@@ -106,7 +107,9 @@ export default {
         font-size: 23px;
         text-align: center;
         line-height: 35px;
+        display: inline-block;
         margin: 10px 20px;
+        margin-left: 835px;
     }
     .photo-pic{
         display: block;

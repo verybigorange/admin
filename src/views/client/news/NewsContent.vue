@@ -1,23 +1,24 @@
 <template>
     <div class="container">
         <div class="center">
-            <!-- <ul>
-                <li class="news-type active">全部</li>
-                <li class="news-type">业界新闻</li>
-            </ul> -->
             <div class="news-wrapper">
-                <div class="news-item clearfix" v-for="(item,index) in tableData" :key="index" @click="$router.push('/news/detail?news_id='+item.news_id)" style="cursor:pointer">
-                    <div class="news-banner pull-left">
+                <el-card
+                    class="news-item"
+                    :body-style="{padding: '0px'}"
+                    v-for="(item,index) in tableData"
+                    :key="index"
+                >
+                    <div class="news-banner" @click="$router.push('/news/detail?news_id='+item.news_id)">
                         <img :src="item.pic_url" alt="新闻照片">
                     </div>
-                    <div class="news-content pull-right">
+                    <div class="news-content" @click="$router.push('/news/detail?news_id='+item.news_id)">
                         <h5 class="news-title">{{item.news_title}}</h5>
                         <p class="news-date">{{item.news_date}}</p>
                         <p>
-                          {{item.news_plainText.substr(0,200)+'...'}}
+                        {{item.news_plainText.substr(0,200)+'...'}}
                         </p>
                     </div>
-                </div>
+                </el-card>
                 <div class="page-wrapper news">
                         <el-pagination
                             :background=true
@@ -125,15 +126,26 @@ export default {
         width: 400px;
         height: 256px;
         overflow: hidden;
+        display: inline-block;
+        vertical-align: top;
+        // float: left;
         &>img {
             height: 100%;
         }
     }
     .news-item {
         margin: 25px 0;
+        background-color: transparent;
+        box-shadow: none;
+        border: none;
+        cursor: pointer;
+        overflow: hidden;
     }
     .news-content {
         width: 595px;
+        display: inline-block;
+        margin-left: 24px;
+        // margin-top: 0;
     }
     .news-date {
         color: #989898;

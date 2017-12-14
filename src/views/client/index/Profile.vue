@@ -3,7 +3,7 @@
       <h3>个人简介</h3>
       <h4>Personal profile</h4>
       <div class="profile-content">
-            <section class="summary pull-left">
+            <section class="summary">
                 <div class="portrait-content">
                     <img style="width: 100%" :src="require('assets/img/portrait.jpg')" alt="大师肖像">
                 </div>
@@ -20,7 +20,7 @@
                     </div>
                 </section>
             </section>
-            <section class="shows pull-right">
+            <section class="shows">
                 <el-carousel
                     class="photo-shows1"
                     :interval="4000"
@@ -139,7 +139,6 @@ export default {
         font-size: 24px;
     }
     .swiper-button-prev {
-        // background: #badd;
         width: 29px;
         height: 56px;
         position: relative;
@@ -150,7 +149,6 @@ export default {
         background-repeat: no-repeat;
     }
     .swiper-button-next {
-        // background: #badd;
         width: 29px;
         height: 56px;
         position: relative;
@@ -239,6 +237,7 @@ export default {
         padding: 0 15px;
         overflow: hidden;
         background-color: #f5f5f5;
+        display: inline-block;
 
     }
 
@@ -246,6 +245,8 @@ export default {
         width: 690px;
         height: 720px;
         overflow: hidden;
+        display: inline-block;
+        margin-left: 19px;
     }
 
     .photo-shows1 {

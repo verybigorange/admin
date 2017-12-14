@@ -1,8 +1,22 @@
 <template>
     <div class="center">
-        <ul @click="handleTypeChange">
+        <!-- <ul @click="handleTypeChange">
             <li v-for="(item, index) in types" class="works-type" :class="{active: type == item}" :key="index">{{item}}</li>
-        </ul>
+        </ul> -->
+        <el-menu
+            @select="handleTypeChange"
+            class="type-menu"
+        >
+            <el-menu-item
+                v-for="(item, index) in types"
+                :key="index"
+                :index="item"
+                class="works-type"
+                :class="{active: type == item}"
+            >
+            {{item}}
+            </el-menu-item>
+        </el-menu>
         <div class="works-content">
             <div class="works-item" v-for="(item, index) in data" :key="index" @click="handleWorkClick(item)">
                 <img style="width: 100%" :src="item.pic_url" alt="作品">
@@ -62,10 +76,10 @@ export default {
             this.total = response.count;
             this.data = response.list;
         },
-        handleTypeChange(e) {
-            let type = e.target.textContent
+        handleTypeChange(index) {
+            // let type = e.target.textContent
             // this.type = type
-            this.$router.push(`/works?type=${type}`)
+            this.$router.push(`/works?type=${index}`)
             this.pageChange.call(this, this.currentPage)
         },
         handleWorkClick(item) {
@@ -82,6 +96,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+    .type-menu {
+        background-color: transparent;
+    }
     .center {
         width: 1024px;
         margin: 0 auto;
@@ -162,7 +179,8 @@ export default {
         margin-bottom: 10px;
         margin-top: 8px;
         box-shadow: 0px 0px 10px #888888;
-        float: left;
+        display: inline-block;
+        // float: left;
         break-inside: avoid;
         cursor: pointer;
         &:hover {

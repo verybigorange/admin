@@ -2,9 +2,23 @@
     <div class="layout-container">
         <div class="nav-container">
                 <div class="center">
-                    <ul class="clearfix" @click="navChnage">
+                    <el-menu
+                        @select="navChnage"
+                        router=true
+                        class="nav-menu"
+                    >
+                        <el-menu-item
+                            v-for="(item, index) in navs"
+                            :key="index"
+                            :index="item"
+                            :class="{active: item != '/' && path.indexOf(item) !== -1}"
+                        >
+                        {{pathMaps[item].title}}
+                        </el-menu-item>
+                    </el-menu>
+                    <!-- <ul class="clearfix" @click="navChnage">
                         <li v-for="(item,index) in navs" :class="{active: item != '/' && path.indexOf(item) !== -1}" :data-index="item" :key="index">{{pathMaps[item].title}}</li>
-                    </ul>
+                    </ul> -->
                 </div>
         </div>
         <div class="main-container">
@@ -64,18 +78,21 @@ export default {
     },
     methods: {
         navChnage(e) {
-            let index = e.target.dataset.index
-            this.$router.push(index)
-            this.activeNav = {
-                path: index,
-                title: e.target.textContent
-            }
+            // let index = e.target.dataset.index
+            // this.$router.push(index)
+            // this.activeNav = {
+            //     path: index,
+            //     title: e.target.textContent
+            // }
         }
     },
 }
 </script>
 
 <style lang="less" scoped>
+    .nav-menu {
+        background-color: transparent;
+    }
     .layout-container {
         background-color: #f6f0e2;
         min-height: calc(100% - 100px);

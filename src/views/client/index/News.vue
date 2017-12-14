@@ -3,9 +3,9 @@
         <h3>新闻中心</h3>
         <h4>News Center</h4>
         <hr class="solid-hr-b" />
-        <div class="clearfix">
-            <h5 class="pull-left">新闻中心</h5>
-            <span class="pull-right more"  @click="$router.push('/news')">更多</span>
+        <div>
+            <h5>新闻中心</h5>
+            <span class="more"  @click="$router.push('/news')">更多</span>
         </div>
         <div class="photos-content">
             <div v-for="(item,index) in newsList" :key="index">
@@ -65,7 +65,8 @@ export default {
     h5 {
         font-size: 28px;
         color: #b23e2f;
-        margin: 12px 20px
+        margin: 12px 20px;
+        display: inline-block;
     }
     h6 {
         font-size: 23px;
@@ -122,6 +123,8 @@ export default {
         font-size: 23px;
         text-align: center;
         line-height: 35px;
-        margin: 10px 20px;
+        margin-top: 10px;
+        margin-left: 780px;
+        display: inline-block;
     }
 </style>

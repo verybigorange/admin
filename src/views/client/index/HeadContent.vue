@@ -4,14 +4,21 @@
         <img style="width: 100%;height:270px;" :src="require('assets/img/banner_01.jpg')" alt="banner">
       </section>
       <nav class="index-nav-bar">
-        <ul class="index-nav-content clearfix" @click="navChange">
-          <li class="nav-item active" data-index="/">首页</li>
-          <li class="nav-item" data-index="/profile">个人简介</li>
-          <li class="nav-item" data-index="/works">作品展示</li>
-          <li class="nav-item" data-index="/album">相册</li>
-          <li class="nav-item" data-index="/news">新闻中心</li>
-          <li class="nav-item" data-index="/contact">联系我们</li>
-        </ul>
+        <el-menu
+            @select="navChnage"
+            router=true
+            class="index-nav-content clearfix"
+        >
+            <el-menu-item
+                v-for="(item, index) in navs"
+                :key="index"
+                :index="item.path"
+                class="nav-item"
+                :class="{active: item.path=='/'}"
+            >
+            {{item.title}}
+            </el-menu-item>
+        </el-menu>
       </nav>
     </header>
 </template>
@@ -19,6 +26,36 @@
 <script>
 export default {
   name: 'Header',
+  data() {
+    return {
+      navs: [
+        {
+          path: '/',
+          title: '首页'
+        },
+        {
+          path: '/profile',
+          title: '个人简介'
+        },
+        {
+          path: '/works',
+          title: '作品展示'
+        },
+        {
+          path: '/album',
+          title: '相册'
+        },
+        {
+          path: '/news',
+          title: '新闻中心'
+        },
+        {
+          path: '/contact',
+          title: '联系我们'
+        }
+      ]
+    }
+  },
   methods: {
     navChange(e) {
       let index = e.target.dataset.index
@@ -48,6 +85,7 @@ export default {
     width: 900px;
     margin: 0 auto;
     overflow: hidden;
+    background-color: transparent;
   }
   li.nav-item{
     float: left;
