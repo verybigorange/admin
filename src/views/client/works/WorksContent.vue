@@ -142,10 +142,9 @@ export default {
         font-size: 18px;
         overflow: hidden;
         padding: 0;
-        &>li {
+        &>li.works-type {
             float: left;
             height: 30px;
-            padding: 0 10px;
             line-height: 30px;
             border: solid 1px #b23e2f;
             color: #b23e2f;
@@ -155,7 +154,7 @@ export default {
                 background-color: #b23e2f;
                 color: #fff;
             }
-            &+li {
+            &+li.works-type {
                 margin-left: 15px;
             }
             &.active {
