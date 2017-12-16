@@ -1,38 +1,38 @@
 <template>
-        <div class="center">
-            <div class="works-detail-wrapper">
-                <div class="works-detail-image">
-                    <img style="max-height:450px;cursor:pointer" :src="pic_url" alt="作品图片" @click="currentBigPic = true" />
-                    <div class='big-pic' v-show='currentBigPic' @click='currentBigPic=false'>
-                        <img :src="pic_url" alt="图片未加载成功">
-                    </div>
+    <div class="center">
+        <div class="works-detail-wrapper">
+            <div class="works-detail-image">
+                <img style="max-height:450px;cursor:pointer" :src="pic_url" alt="作品图片" @click="currentBigPic = true" />
+            </div>
+            <h5>《{{work_title}}》</h5>
+            <p class="works-label clearfix">
+                <span class="view-num pull-left">浏览{{view_count}}次</span>
+                <!-- <span class="comment-num pull-right"><i class="el-icon-edit-outline"></i>217</span> -->
+            </p>
+            <el-input type="textarea" v-model="txt" placeholder="120个字以内" :maxlength=120 :autosize="{ minRows: 2, maxRows: 4}"></el-input>
+            <span class="comment-btn" @click="commit">发表</span>
+            <div style="clear:both;"></div>
+            <div class="works-comments">
+                <div class="comment-item" v-for="(item,index) in tableData" :key="index">
+                    <p class="comment-person">游客评论</p>
+                    <p class="comment-date">{{convertUTCTimeToLocalTime(item.comment_date)}}</p>
+                    <p class="comment-content">{{item.comment}}</p>
                 </div>
-                <h5>《{{work_title}}》</h5>
-                <p class="works-label clearfix">
-                    <span class="view-num pull-left">浏览{{view_count}}次</span>
-                    <!-- <span class="comment-num pull-right"><i class="el-icon-edit-outline"></i>217</span> -->
-                </p>
-               <el-input type="textarea" v-model="txt" placeholder="120个字以内" :maxlength=120 :autosize="{ minRows: 2, maxRows: 4}"></el-input>
-               <span class="comment-btn" @click="commit">发表</span>
-               <div style="clear:both;"></div>
-                <div class="works-comments">
-                    <div class="comment-item" v-for="(item,index) in tableData" :key="index">
-                        <p class="comment-person">游客评论</p>
-                        <p class="comment-date">{{convertUTCTimeToLocalTime(item.comment_date)}}</p>
-                        <p class="comment-content">{{item.comment}}</p>
-                    </div>
-                    <div class="page-wrapper works">
-                        <el-pagination
-                            :background=true
-                            layout="prev, pager, next"
-                            :page-size="limit"
-                            @current-change = 'pageChange'
-                            :total="total"
-                        >
-                        </el-pagination>
-                    </div>
+                <div class="page-wrapper works">
+                    <el-pagination
+                        :background=true
+                        layout="prev, pager, next"
+                        :page-size="limit"
+                        @current-change = 'pageChange'
+                        :total="total"
+                    >
+                    </el-pagination>
                 </div>
             </div>
+        </div>
+        <div class='big-pic' v-show='currentBigPic' @click='currentBigPic=false'>
+            <el-slider v-model="value" :show-tooltip="false"></el-slider>
+            <img :src="pic_url" alt="图片未加载成功">
         </div>
     </div>
 </template>

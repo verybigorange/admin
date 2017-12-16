@@ -66,6 +66,9 @@ export default {
         border: none;
         margin: 0;
     }
+    .photo_title {
+        font-size: 18px;
+    }
     .solid-hr-b {
         height: 4px;
         margin-top: 22px;
