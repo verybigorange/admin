@@ -30,9 +30,9 @@
                 </div>
             </div>
         </div>
+        <span class="close-modal" v-show="currentBigPic" @click="handleClose"><i class="el-icon-close"></i></span>
+        <el-slider v-show="currentBigPic" :min="50" :max="500" class="work-zoom-slider" v-model="zoomValue" vertical height="300px" :show-tooltip="false"></el-slider>
         <div class='big-pic' v-show='currentBigPic'>
-            <span class="close-modal" @click="handleClose"><i class="el-icon-close"></i></span>
-            <el-slider :min="50" :max="500" class="work-zoom-slider" v-model="zoomValue" vertical height="300px" :show-tooltip="false"></el-slider>
             <div class="img-contaier">
                 <img ref='img' :style="{width: $refs.img ? $refs.img.naturalWidth * zoomValue / 100 + 'px' : 'auto'}" :src="pic_url" alt="图片未加载成功">
             </div>
@@ -113,9 +113,6 @@ export default {
             transform:translate(-50%,-50%);
         }
     }
-    img {
-        max-width: auto!important;
-    }
     .work-zoom-slider {
         position: fixed;
         right: 20px;
@@ -124,7 +121,7 @@ export default {
     }
     .close-modal {
         position: fixed;
-        right: 20px;
+        right: 25px;
         top: 10px;
         color: #f00;
         font-size: 30px;
