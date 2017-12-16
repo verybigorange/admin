@@ -21,7 +21,7 @@
             <div class="works-item" v-for="(item, index) in data" :key="index" @click="handleWorkClick(item)">
                 <img style="width: 100%" :src="item.pic_url" alt="作品">
                 <div class="works-desc">
-                    <h6>《{{item.work_title}}》</h6>
+                    <h6 style="word-break: break-all;">《{{item.work_title}}》</h6>
                     <p><span class="works-view"><i class="el-icon-view"></i>{{item.view_count}}</span></p>
                 </div>
             </div>

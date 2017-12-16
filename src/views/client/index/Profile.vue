@@ -50,7 +50,7 @@
                             <swiperSlide v-for="(img, index) in imgArrs" :key="index">
                                 <div @click="handleImgClick(img)" class="img-wrapper2" :style="{'background-image': 'url('+img.pic_url +')'}">
                                 </div>
-                                <p class="img-title-2">{{img.work_title}}</p>
+                                <p class="img-title-2" :title="img.work_title">{{img.work_title}}</p>
                             </swiperSlide>
                             <!-- Optional controls -->
                             <!-- <div class="swiper-pagination"  slot="pagination"></div> -->
@@ -206,6 +206,10 @@ export default {
     }
     .img-title-2 {
         text-align: center;
+        width:130px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     .profile-text {
@@ -289,7 +293,7 @@ export default {
         padding: 10px;
         margin-top: 40px;
         margin-left: 55px;
-        background-color: #fff;
+        background-color: #f5f5f5;
     }
     
     .more {
@@ -337,5 +341,11 @@ export default {
     }
     .photo-shows1 .el-carousel__mask {
         background-color: rgba(0,0,0,0);
+    }
+    .wrks-title-1{
+        width: 500px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 </style>

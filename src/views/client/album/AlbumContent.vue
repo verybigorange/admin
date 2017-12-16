@@ -5,7 +5,7 @@
                 <div class="photo-content">
                     <img :src="item.pic_url" alt="图片"  @click="currentBigPic=index">
                 </div>
-                <p class="photo-desc">{{item.pic_title}}</p>
+                <p class="photo-desc" :title="item.pic_title">{{item.pic_title}}</p>
                 <div class='big-pic' v-show='currentBigPic==index' @click='currentBigPic=-1'>
                     <img :src="item.pic_url" alt="图片未加载成功">
                 </div>
@@ -106,6 +106,10 @@ export default {
             text-align: center;
             color: #b23e2f;
             font-size: 15px;
+            width: 250px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     }
     .page-wrapper {
