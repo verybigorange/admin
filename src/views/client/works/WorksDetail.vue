@@ -105,7 +105,7 @@ export default {
 
 <style lang="less" scoped>
     .big-pic {
-        overflow: auto;
+        overflow: scroll;
         &>.img-contaier {
             position: absolute;
             top: 50%;
@@ -118,14 +118,14 @@ export default {
     }
     .work-zoom-slider {
         position: fixed;
-        right: 0;
-        top: 100px;
+        right: 20px;
+        top: 20%;
         z-index: 999;
     }
     .close-modal {
         position: fixed;
-        right: 0;
-        top: 0;
+        right: 20px;
+        top: 10px;
         color: #f00;
         font-size: 30px;
         cursor: pointer;
