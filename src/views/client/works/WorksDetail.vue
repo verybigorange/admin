@@ -2,7 +2,7 @@
     <div class="center">
         <div class="works-detail-wrapper">
             <div class="works-detail-image">
-                <img style="max-height:450px;cursor:pointer" :src="pic_url" alt="作品图片" @click="currentBigPic = true" />
+                <img style="max-height:450px;cursor:pointer" :src="pic_url" alt="作品图片" @click="currentBigPic=true" />
             </div>
             <h5>《{{work_title}}》</h5>
             <p class="works-label clearfix">
@@ -30,9 +30,12 @@
                 </div>
             </div>
         </div>
-        <div class='big-pic' v-show='currentBigPic' @click='currentBigPic=false'>
-            <el-slider v-model="value" :show-tooltip="false"></el-slider>
-            <img :src="pic_url" alt="图片未加载成功">
+        <div class='big-pic' v-show='currentBigPic'>
+            <span class="close-modal" @click="handleClose"><i class="el-icon-close"></i></span>
+            <el-slider :min="50" :max="500" class="work-zoom-slider" v-model="zoomValue" vertical height="300px" :show-tooltip="false"></el-slider>
+            <div class="img-contaier">
+                <img ref='img' :style="{width: $refs.img ? $refs.img.naturalWidth * zoomValue / 100 + 'px' : 'auto'}" :src="pic_url" alt="图片未加载成功">
+            </div>
         </div>
     </div>
 </template>
@@ -56,6 +59,7 @@ export default {
       work_title:'',
       currentBigPic:false,
       txt:"", //评论内容
+      zoomValue: 100,
       convertUTCTimeToLocalTime:convertUTCTimeToLocalTime
     };
   },
@@ -90,13 +94,43 @@ export default {
                 this.txt = '';
             }
         })
-       
+    },
+    handleClose() {
+        this.zoomValue = 100;
+        this.currentBigPic = false;
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
+    .big-pic {
+        overflow: auto;
+        &>.img-contaier {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform:translate(-50%,-50%);
+        }
+    }
+    img {
+        max-width: auto!important;
+    }
+    .work-zoom-slider {
+        position: fixed;
+        right: 0;
+        top: 100px;
+        z-index: 999;
+    }
+    .close-modal {
+        position: fixed;
+        right: 0;
+        top: 0;
+        color: #f00;
+        font-size: 30px;
+        cursor: pointer;
+        z-index: 999;
+    }
     .center {
         width: 1024px;
         margin: 0 auto;
