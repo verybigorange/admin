@@ -13,7 +13,7 @@
                     </div>
                     <div class="news-content" @click="$router.push('/news/detail?news_id='+item.news_id)">
                         <h5 class="news-title">{{item.news_title}}</h5>
-                        <p class="news-date">{{item.news_date}}</p>
+                        <p class="news-date">{{convertUTCTimeToLocalTime(item.news_date)}}</p>
                         <p>
                         {{item.news_plainText.substr(0,200)+'...'}}
                         </p>
