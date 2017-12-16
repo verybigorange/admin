@@ -84,10 +84,9 @@ export default {
     commit(){
         if(!this.txt) return
         let res = comment_add({id:this.work_id,comment:this.txt}).then(res=>{
-             console.log(res)
             if(res != '0'){
                 this.total ++;
-                this.tableData.push(res);
+                this.tableData.unshift(res);
                 this.txt = '';
             }
         })
