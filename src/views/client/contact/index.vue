@@ -3,18 +3,18 @@
         <p><span class="attention">关注</span><span class="web-name">何笑勤个人网站</span></p>
         <div class="footer-content clearfix">
             <div class="links-l pull-left clearfix">
-                <a class="attention-link" href=""><i class="weibo"></i></a>
+                <a class="attention-link" href="https://weibo.com/u/6410592208"><i class="weibo"></i></a>
                 <a class="attention-link" href=""><i class="qq"></i></a>
                 <a class="attention-link" href=""><i class="weixin"></i></a>
             </div>
             <div class="adds-m pull-left">
                 <p>地址：四川省眉山市洪雅县</p>
-                <p>电话：028-58478454</p>
-                <p>地址：0000000000@qq.com</p>
+                <p>电话：13778888820</p>
             </div>
             <div class="adds-r pull-right">
-                <p>邮编：620350</p>
-                <p>地址：18183272222</p>
+                <p>邮箱：762426@qq.com</p>
+                <p>邮编：620300</p>
+                <!-- <p>地址：18183272222</p> -->
             </div>
         </div>
     </div>
