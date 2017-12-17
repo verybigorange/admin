@@ -19,7 +19,7 @@
             </div>
             <div class="adds-r">
                 <p>邮编：620300</p>
-                <p>地址：18183272222</p>
+                <!-- <p>地址：18183272222</p> -->
             </div>
         </div>
         <div class="copyright">
