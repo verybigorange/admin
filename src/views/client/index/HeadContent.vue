@@ -1,7 +1,7 @@
 <template>
    <header>
       <section class="index-banner">
-        <img style="width: 100%;height:270px;" :src="require('assets/img/banner_01.jpg')" alt="banner">
+        <img style="width: 100%;" :src="require('assets/img/banner_01.jpg')" alt="banner">
       </section>
       <nav class="index-nav-bar">
         <el-menu

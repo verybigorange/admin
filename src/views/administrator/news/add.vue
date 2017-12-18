@@ -35,7 +35,8 @@
               <el-date-picker
                 v-model="date"
                 type="datetime"
-                placeholder="选择日期时间">
+                placeholder="选择日期时间"
+               	>
               </el-date-picker>
           </div>
   
@@ -90,7 +91,7 @@ export default {
       ue1: "ue1", // 不同编辑器必须不同的id
       title: "", //新闻标题
       content: "", //新闻内容
-      date: "" ,//新闻发布的日期
+      date: new Date() ,//新闻发布的日期
       pic_name:"", //新闻封面的图片的名称
       url:"" //新闻封面图的路径
     };

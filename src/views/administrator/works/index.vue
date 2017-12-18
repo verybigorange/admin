@@ -24,7 +24,7 @@
          label="图片"
       >
        <template slot-scope="scope">
-          <img :src="scope.row.pic_url" alt="图片未加载成功" height="40px" style="border:1px solid #cbcbcb">
+          <img :src="scope.row.pic_url" alt="图片未加载成功" height="40px" >
        </template>
       </el-table-column>
       <el-table-column
