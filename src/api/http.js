@@ -10,7 +10,7 @@ const service = axios.create({
     baseURL: "/api",
 });
 
-service.defaults.timeout = 10000
+service.defaults.timeout = 60000
 // http请求拦截器
 var loadinginstace
 service.interceptors.request.use(config => {
