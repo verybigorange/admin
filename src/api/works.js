@@ -24,6 +24,11 @@ export async function work_select(params) {
     return data;
 }
 
+//查询首页需要展示的作品
+export async function work_home_show(params) {
+    let { data } = await http.post('/works/home_show');
+    return data;
+}
 
 // 按id查询作品
 export async function work_select_id(params) {
@@ -57,7 +62,7 @@ export async function delete_pic(params) {
             message: "删除成功",
             type: 'success'
         })
-    } else {
+    }else if(data == '0'){
         Message.error({
             message: "删除失败！"
         })

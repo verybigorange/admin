@@ -3,42 +3,22 @@
         <h3>新闻中心</h3>
         <h4>News Center</h4>
         <hr class="solid-hr-b" />
-        <div class="clearfix">
-            <h5 class="pull-left">新闻中心</h5>
-            <span class="pull-right more">更多</span>
+        <div>
+            <h5>新闻中心</h5>
+            <span class="more"  @click="$router.push('/news')">更多</span>
         </div>
         <div class="photos-content">
-            <hr class="solid-hr-t" />
-            <div class="news-item clearfix">
-                <div class="news-item-l pull-left">
-                    <h6>关于何笑勤你最想了解的几个问题</h6>
-                    <p class="news-date">2017-10-11</p>
-                    <p class="news-content">字默舟，生于一九五六年，四川洪雅人。中原书画院研究员，眉山地区美协会员。　八岁开始学画，早年曾受画坛前辈钱松岩、李琼玖等先生的指教。自学三十余年，深入传统的研修，并把现代精神与笔墨融合其中不断的求索，勤奋笔耕，力求突破与创新、自然与物象变与合的统一感悟、生化，其作品深得同行和前辈认可。</p>
-                </div>
-                <div class="news-item-r pull-right">
-                    <span class="news-detail">详细</span>
-                </div>
-            </div>
-            <hr class="solid-hr-t" />
-            <div class="news-item clearfix">
-                <div class="news-item-l pull-left">
-                    <h6>关于何笑勤你最想了解的几个问题</h6>
-                    <p class="news-date">2017-10-11</p>
-                    <p class="news-content">字默舟，生于一九五六年，四川洪雅人。中原书画院研究员，眉山地区美协会员。　八岁开始学画，早年曾受画坛前辈钱松岩、李琼玖等先生的指教。自学三十余年，深入传统的研修，并把现代精神与笔墨融合其中不断的求索，勤奋笔耕，力求突破与创新、自然与物象变与合的统一感悟、生化，其作品深得同行和前辈认可。</p>
-                </div>
-                <div class="news-item-r pull-right">
-                    <span class="news-detail">详细</span>
-                </div>
-            </div>
-            <hr class="solid-hr-t" />
-            <div class="news-item clearfix">
-                <div class="news-item-l pull-left">
-                    <h6>关于何笑勤你最想了解的几个问题</h6>
-                    <p class="news-date">2017-10-11</p>
-                    <p class="news-content">字默舟，生于一九五六年，四川洪雅人。中原书画院研究员，眉山地区美协会员。　八岁开始学画，早年曾受画坛前辈钱松岩、李琼玖等先生的指教。自学三十余年，深入传统的研修，并把现代精神与笔墨融合其中不断的求索，勤奋笔耕，力求突破与创新、自然与物象变与合的统一感悟、生化，其作品深得同行和前辈认可。</p>
-                </div>
-                <div class="news-item-r pull-right">
-                    <span class="news-detail">详细</span>
+            <div v-for="(item,index) in newsList" :key="index">
+                <hr class="solid-hr-t" />
+                <div class="news-item clearfix" >
+                    <div class="news-item-l">
+                        <h6>{{item.news_title}}</h6>
+                        <p class="news-date">{{convertUTCTimeToLocalTime(item.news_date)}}</p>
+                        <p class="news-content">{{item.news_plainText.substr(0,200)+'...'}}</p>
+                    </div>
+                    <div class="news-item-r">
+                        <span class="news-detail"  @click="$router.push('/news/detail?news_id='+item.news_id)">详细</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -47,8 +27,22 @@
 </template>
 
 <script>
+import { news_select } from 'api/news';
+import { convertUTCTimeToLocalTime } from 'utils/index.js' 
+
 export default {
-  name: 'News'
+  name: 'News',
+  async mounted(){
+    // 首次请求数据
+    let { list } = await news_select({limit:3,currentPage:1});
+    this.newsList = list;
+  },
+  data(){
+      return {
+          newsList:[],
+          convertUTCTimeToLocalTime:convertUTCTimeToLocalTime
+      }
+  }
 }
 </script>
 
@@ -71,7 +65,8 @@ export default {
     h5 {
         font-size: 28px;
         color: #b23e2f;
-        margin: 12px 20px
+        margin: 12px 20px;
+        display: inline-block;
     }
     h6 {
         font-size: 23px;
@@ -104,6 +99,12 @@ export default {
     }
     .news-item-l {
         width: 860px;
+        display: inline-block;
+    }
+    .news-item-r {
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 70px;
     }
     .news-detail {
         display: block;
@@ -114,11 +115,12 @@ export default {
         border: 1px solid #b23e2f;
         color: #b23e2f;
         font-size: 23px;
-        margin: 100px 20px 0 0;
+        margin: 30px 20px 0 0;
         cursor: pointer;
     }
 
     .more {
+        cursor: pointer;
         display: block;
         width: 68px;
         height: 35px;
@@ -127,6 +129,8 @@ export default {
         font-size: 23px;
         text-align: center;
         line-height: 35px;
-        margin: 10px 20px;
+        margin-top: 10px;
+        margin-left: 778px;
+        display: inline-block;
     }
 </style>

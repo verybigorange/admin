@@ -34,3 +34,20 @@ export async function comment_delete_all(params) {
         return '0'
     }
 }
+
+//增加作品评论
+export async function comment_add(params) {
+    let {data} = await http.post('/comment/add',params);
+    if (data != '0') {
+        Message({
+            message: "评论成功！",
+            type: 'success'
+        })
+        return data
+    } else {
+        Message.error({
+            message: "评论失败！"
+        })
+        return '0'
+    }
+}

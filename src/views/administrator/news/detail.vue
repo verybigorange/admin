@@ -14,6 +14,7 @@
 
 <script>
 import { news_select_id } from 'api/news';
+import { convertUTCTimeToLocalTime } from 'utils/index'
 
 export default {
   data() {
@@ -30,7 +31,7 @@ export default {
     //回显
     let res = await news_select_id({id:this.work_id});
     this.news_title = res.news_title;
-    this.news_date = res.news_date.substr(0,10)+" "+res.news_date.substr(11,8);
+    this.news_date = convertUTCTimeToLocalTime(res.news_date);
     let {news_content} = res;
     this.$refs.content.innerHTML =  news_content;
   },

@@ -1,52 +1,69 @@
 <template>
     <div class="container">
         <div class="center">
-            <h3>新闻中心</h3>
-            <h4>News Center</h4>
-            <h5>关于何笑勤，你最想了解的几个问题</h5>
-            <p class="news-date">2017-10-11</p>
-            <div class="news-content">
-                <p style="text-align:center;text-indent:0">
-                    <img style="width:100%;" :src="require('assets/img/news_photo.png')" alt="新闻照片">
-                </p>
-                <p>
-                    字默舟，生于一九五六年，四川洪雅人。中原书画院研究员，眉山地区美协会
-                    员。　八岁开始学画，早年曾受画坛前辈钱松岩、李琼玖等先生的指教。自学三十
-                    余年深入传统的研修，并把现代精神与笔墨融合其中不断的求索，勤奋笔耕，力求
-                    突破与创新
-                </p>
-                <p>
-                    字默舟，生于一九五六年，四川洪雅人。中原书画院研究员，眉山地区美协会
-                    员。　八岁开始学画，早年曾受画坛前辈钱松岩、李琼玖等先生的指教。自学三十
-                    余年深入传统的研修，并把现代精神与笔墨融合其中不断的求索，勤奋笔耕，力求
-                    突破与创新
-                </p>
-                <p>
-                    字默舟，生于一九五六年，四川洪雅人。中原书画院研究员，眉山地区美协会
-                    员。　八岁开始学画，早年曾受画坛前辈钱松岩、李琼玖等先生的指教。自学三十
-                    余年深入传统的研修，并把现代精神与笔墨融合其中不断的求索，勤奋笔耕，力求
-                    突破与创新
-                </p>
-                <p>
-                    字默舟，生于一九五六年，四川洪雅人。中原书画院研究员，眉山地区美协会
-                    员。　八岁开始学画，早年曾受画坛前辈钱松岩、李琼玖等先生的指教。自学三十
-                    余年深入传统的研修，并把现代精神与笔墨融合其中不断的求索，勤奋笔耕，力求
-                    突破与创新
-                </p>
-                <p>
-                    字默舟，生于一九五六年，四川洪雅人。中原书画院研究员，眉山地区美协会
-                    员。　八岁开始学画，早年曾受画坛前辈钱松岩、李琼玖等先生的指教。自学三十
-                    余年深入传统的研修，并把现代精神与笔墨融合其中不断的求索，勤奋笔耕，力求
-                    突破与创新
-                </p>
+            <div class="news-wrapper">
+                <el-card
+                    class="news-item"
+                    :body-style="{padding: '0px'}"
+                    v-for="(item,index) in tableData"
+                    :key="index"
+                >
+                    <div class="news-banner" @click="$router.push('/news/detail?news_id='+item.news_id)">
+                        <img :src="item.pic_url" alt="新闻照片">
+                    </div>
+                    <div class="news-content" @click="$router.push('/news/detail?news_id='+item.news_id)">
+                        <h5 class="news-title">{{item.news_title}}</h5>
+                        <p class="news-date">{{convertUTCTimeToLocalTime(item.news_date)}}</p>
+                        <p>
+                        {{item.news_plainText.substr(0,200)+'...'}}
+                        </p>
+                    </div>
+                </el-card>
+                <div class="page-wrapper news">
+                        <el-pagination
+                            :background=true
+                            layout="prev, pager, next"
+                            :page-size="limit"
+                            @current-change = 'pageChange'
+                            :total="total"
+                        >
+                        </el-pagination>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import { news_select } from 'api/news';
+import { convertUTCTimeToLocalTime } from 'utils/index'
+
 export default {
-  name: "NewsContent"
+  name: "NewsContent",
+  async mounted(){
+    // 首次请求数据
+    let { count,list } = await news_select({limit:this.limit,currentPage:this.currentPage});
+    this.total = count;
+    this.tableData = list;
+  },
+  data(){
+    return {
+      index:0,//表格索引
+      tableData: [], //表格数据
+      limit:4,  //每页显示数量
+      total:0,  //总数
+      currentPage:1, //当前页,
+      convertUTCTimeToLocalTime:convertUTCTimeToLocalTime
+    }
+  },
+  methods:{
+       // 切换分页
+    async pageChange(size){
+      this.currentPage = size;
+      let { list } = await news_select({limit:this.limit,currentPage:this.currentPage});
+      this.tableData = list;
+    },
+  }
 }
 </script>
 
@@ -57,10 +74,9 @@ export default {
         height: 100%;
     }
     p {
-        text-indent: 2em;
         color: #666;
-        font-size: 22px;
-        line-height: 38px;
+        font-size: 16px;
+        line-height: 22px;
     }
     h3 {
         color: #b23e2f;
@@ -78,20 +94,77 @@ export default {
         margin-bottom: 40px;
     }
     h5 {
-        font-size: 30px;
-        text-align: center;
-        margin-top: 40px;
-        margin-bottom: 20px;
+        font-size: 18px;
+        color: #b23e2f;
+        text-align: left;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    ul {
+        list-style: none;
+        font-size: 18px;
+        overflow: hidden;
+        padding: 0;
+        &>li {
+            float: left;
+            padding: 0 15px;
+            height: 30px;
+            line-height: 30px;
+            border: solid 1px #b23e2f;
+            color: #b23e2f;
+            text-align: center;
+            &+li {
+                margin-left: 15px;
+            }
+            &.active {
+                background-color: #b23e2f;
+                color: #fff;
+            }
+        }
+    }
+    .news-banner {
+        width: 400px;
+        height: 256px;
+        overflow: hidden;
+        display: inline-block;
+        vertical-align: top;
+        // float: left;
+        &>img {
+            height: 100%;
+        }
+    }
+    .news-item {
+        margin: 25px 0;
+        background-color: transparent;
+        box-shadow: none;
+        border: none;
+        cursor: pointer;
+        overflow: hidden;
+    }
+    .news-content {
+        width: 595px;
+        display: inline-block;
+        margin-left: 22px;
+        // margin-top: 0;
     }
     .news-date {
         color: #989898;
-        font-size: 17px;
+        font-size: 14px;
+        text-align: left;
+        margin-top: 10px;
+    }
+    
+    .page-wrapper {
         text-align: center;
-        margin-bottom: 40px;
+        margin: 30px 0 80px;
     }
-    .news-content {
-        width: 800px;
-        margin: 0 auto;
+</style>
+<style>
+    div.page-wrapper .el-pagination * {
+        background-color: transparent;
     }
-
+    div.page-wrapper .el-pager > .number.active {
+        background-color: #b23e2f;
+        color: #fff;
+    }
 </style>

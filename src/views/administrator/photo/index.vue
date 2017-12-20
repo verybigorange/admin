@@ -16,7 +16,7 @@
             </div>
             </transition>
             <img :src="item.pic_url" alt="图片未加载成功">
-            <p class='title'>{{item.pic_title}}</p>
+            <p class='title' :title="item.pic_title">{{item.pic_title}}</p>
         </div>
      </div>
     <el-pagination
@@ -109,6 +109,10 @@ export default {
       max-height: 80%; 
     }
     .title{
+      width: 320px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       position: absolute;
       top:140px;
       left: 0;
@@ -131,21 +135,6 @@ export default {
         position: absolute;
         right:5px;
         top:5px;
-      }
-      .big-pic{
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, .8);
-        z-index: 998;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        left: 0;
-        top:0;
-        >img{
-           z-index: 998;
-        }
       }
     }
   }

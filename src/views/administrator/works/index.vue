@@ -13,7 +13,7 @@
     <el-button type="deflaut" class="pull-right" @click="addWork">添加作品</el-button>
      <el-table
       :data="tableData"
-      style="width: 100%;margin-top:30px;">
+      style="width: 100%;margin-top:30px;border:2px solid #ccc;">
       <el-table-column
         prop="work_title"
         label="名称"
@@ -24,7 +24,7 @@
          label="图片"
       >
        <template slot-scope="scope">
-          <img :src="scope.row.pic_url" alt="图片未加载成功" height="40px" style="border:1px solid #cbcbcb">
+          <img :src="scope.row.pic_url" alt="图片未加载成功" height="40px" >
        </template>
       </el-table-column>
       <el-table-column
@@ -136,9 +136,13 @@ export default {
         value: '花鸟',
         label: '花鸟'
       }, {
-        value: '临摹',
-        label: '临摹'
-      }],
+          value: "临摹对比",
+          label: "临摹对比"
+        },
+        {
+          value: "长江三峡",
+          label: "长江三峡"
+        }],
         type: '全部'
     };
   }

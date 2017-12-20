@@ -1,27 +1,31 @@
 <template>
-    <div class="footer-container">
+    <div class="footer-container" style="position:relative">
         <h3>联系我们</h3>
         <h4>Contact us</h4>
         <hr class="solid-hr-b" />
         <h5>联系我们</h5>
         <hr class="solid-hr-t" />
-        <div class="footer-content clearfix">
-            <div class="links-l pull-left clearfix">
+        <div class="footer-content">
+            <div class="links-l">
                 <span class="attention">关注</span>
-                <a class="attention-link" href=""><i class="weibo"></i></a>
+                <a class="attention-link" href="https://weibo.com/u/6410592208"><i class="weibo"></i></a>
                 <a class="attention-link" href=""><i class="qq"></i></a>
                 <a class="attention-link" href=""><i class="weixin"></i></a>
             </div>
-            <div class="adds-m pull-left">
+            <div class="adds-m">
                 <p>地址：四川省眉山市洪雅县</p>
-                <p>电话：028-58478454</p>
-                <p>地址：0000000000@qq.com</p>
+                <p>电话：13778888820</p>
+                <p>邮箱：762426@qq.com</p>
             </div>
-            <div class="adds-r pull-right">
-                <p>邮编：620350</p>
-                <p>地址：18183272222</p>
+            <div class="adds-r">
+                <p>邮编：620360</p>
+                <!-- <p>地址：18183272222</p> -->
             </div>
         </div>
+        <div class="copyright">
+             <small>Copyright©洪雅县笑勤文化交流有限公司 All Rights Reserved. 蜀ICP备1000000号-1000-028-3272</small>
+        </div>
+        <a href="javascript:;" class="go-admin" @click="$router.push('/admin/home')">进入后台管理系统</a>
     </div>
 
 </template>
@@ -56,6 +60,9 @@ export default {
     hr {
         border: none;
         margin: 0;
+    }
+    .footer-content {
+        font-size: 0;
     }
     .solid-hr-b {
         height: 4px;
@@ -100,14 +107,20 @@ export default {
         display: block;
         width: 35px;
         height: 35px;
-        // background-image: url('../../../assets/img/weixin.png');
+        background-image: url('../../../assets/img/weixin.png');
         background-size: 35px 35px;
+    }
+    .links-l {
+        display: inline-block;
+        vertical-align: top;
     }
     .adds-m,.adds-r {
         font-size: 23px;
         color: #989898;
         margin-top: 60px;
         margin-left: 120px;
+        display: inline-block;
+        vertical-align: top;
         &>p {
             padding: 0;
             margin: 0;
@@ -115,5 +128,20 @@ export default {
                 margin-top: 35px;
             }
         }
+    }
+    .copyright{
+        text-align: center;
+        padding: 20px 0;
+        color:#989898;
+    }
+    .go-admin{
+        font-weight:500;
+        position: absolute;
+        bottom:44px;
+        left: 50%;
+        margin-left: -50px;
+        color:#666;
+        font-size: 14px;
+        text-decoration: underline;
     }
 </style>

@@ -1,9 +1,10 @@
 <template>
   <div>
      <el-button type="deflaut" class="pull-right" @click="addWork">添加新闻</el-button>
+     <div style="clear:both"></div>
        <el-table
       :data="tableData"
-      style="width: 100%;margin-top:30px;">
+      style="width: 100%;margin-top:30px;border:2px solid #ccc;">
       <el-table-column
         prop="news_title"
         label="标题"
@@ -25,7 +26,7 @@
         :index="index"
       >
         <template slot-scope="scope">
-            <el-button type="danger" size="mini" @click="handleDelete(scope.row.news_id,scope.$index)">删除</el-button>
+            <el-button type="danger" size="mini" @click="handleDelete(scope.row.news_id,scope.row.pic_name,scope.$index)">删除</el-button>
             <el-button type="info" size="mini" @click="handleEdit(scope.row.news_id)">编辑</el-button>
             <el-button type="success" size="mini" @click="handleDetail(scope.row.news_id)">详情</el-button>
         </template>
@@ -77,9 +78,9 @@ export default {
       this.$router.push("/admin/newsEdit?id="+id);
     },
     //新闻删除
-    async handleDelete(id,index){
+    async handleDelete(id,pic_name,index){
       // 删除后返回新数据
-      let res = await delete_news({id});
+      let res = await delete_news({id,pic_name});
       if(res == 1){
          this.total--;
          this.tableData.splice(index,1);

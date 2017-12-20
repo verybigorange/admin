@@ -1,143 +1,104 @@
- <template>
-    <div class="container">
-        <div class="center">
-            <h3>作品展示</h3>
-            <h4>Exhibition of works</h4>
-            <ul>
-                <li class="works-type active">全部</li>
-                <li class="works-type">山水</li>
-                <li class="works-type">花鸟</li>
-                <li class="works-type">人物</li>
-                <li class="works-type">临摹</li>
-            </ul>
-            <div class="works-content">
-               <div class="works-item">
-                   <img style="width: 100%" :src="require('assets/img/works_03.jpg')" alt="作品">
-                   <div class="works-desc">
-                      <h6>《作品名称》</h6>
-                      <p><span class="works-view"><i class="el-icon-view"></i>212</span><span class="works-edit"><i class="el-icon-edit-outline"></i>17</span></p>
-                   </div>
-               </div>
-                <div class="works-item">
-                   <img style="width: 100%" :src="require('assets/img/works_03.jpg')" alt="作品">
-                   <div class="works-desc">
-                      <h6>《作品名称》</h6>
-                      <p><span class="works-view"><i class="el-icon-view"></i>212</span><span class="works-edit"><i class="el-icon-edit-outline"></i>17</span></p>
-                   </div>
-               </div>
-               <div class="works-item">
-                   <img style="width: 100%" :src="require('assets/img/wokrs_06.jpg')" alt="作品">
-                   <div class="works-desc">
-                      <h6>《作品名称》</h6>
-                      <p><span class="works-view"><i class="el-icon-view"></i>212</span><span class="works-edit"><i class="el-icon-edit-outline"></i>17</span></p>
-                   </div>
-               </div>
-               <div class="works-item">
-                   <img style="width: 100%" :src="require('assets/img/works_08.jpg')" alt="作品">
-                   <div class="works-desc">
-                      <h6>《作品名称》</h6>
-                      <p><span class="works-view"><i class="el-icon-view"></i>212</span><span class="works-edit"><i class="el-icon-edit-outline"></i>17</span></p>
-                   </div>
-               </div>
-               <div class="works-item">
-                   <img style="width: 100%" :src="require('assets/img/works_03.jpg')" alt="作品">
-                   <div class="works-desc">
-                      <h6>《作品名称》</h6>
-                      <p><span class="works-view"><i class="el-icon-view"></i>212</span><span class="works-edit"><i class="el-icon-edit-outline"></i>17</span></p>
-                   </div>
-               </div>
-               
-               <div class="works-item">
-                   <img style="width: 100%" :src="require('assets/img/works_08.jpg')" alt="作品">
-                   <div class="works-desc">
-                      <h6>《作品名称》</h6>
-                      <p><span class="works-view"><i class="el-icon-view"></i>212</span><span class="works-edit"><i class="el-icon-edit-outline"></i>17</span></p>
-                   </div>
-               </div>
-               <div class="works-item">
-                   <img style="width: 100%" :src="require('assets/img/wokrs_06.jpg')" alt="作品">
-                   <div class="works-desc">
-                      <h6>《作品名称》</h6>
-                      <p><span class="works-view"><i class="el-icon-view"></i>212</span><span class="works-edit"><i class="el-icon-edit-outline"></i>17</span></p>
-                   </div>
-               </div>
-               <div class="works-item">
-                   <img style="width: 100%" :src="require('assets/img/works_08.jpg')" alt="作品">
-                   <div class="works-desc">
-                      <h6>《作品名称》</h6>
-                      <p><span class="works-view"><i class="el-icon-view"></i>212</span><span class="works-edit"><i class="el-icon-edit-outline"></i>17</span></p>
-                   </div>
-               </div>
-               <div class="works-item">
-                   <img style="width: 100%" :src="require('assets/img/works_03.jpg')" alt="作品">
-                   <div class="works-desc">
-                      <h6>《作品名称》</h6>
-                      <p><span class="works-view"><i class="el-icon-view"></i>212</span><span class="works-edit"><i class="el-icon-edit-outline"></i>17</span></p>
-                   </div>
-               </div>
-              
-               <div class="works-item">
-                   <img style="width: 100%" :src="require('assets/img/works_03.jpg')" alt="作品">
-                   <div class="works-desc">
-                      <h6>《作品名称》</h6>
-                      <p><span class="works-view"><i class="el-icon-view"></i>212</span><span class="works-edit"><i class="el-icon-edit-outline"></i>17</span></p>
-                   </div>
-               </div>
-               <div class="works-item">
-                   <img style="width: 100%" :src="require('assets/img/wokrs_06.jpg')" alt="作品">
-                   <div class="works-desc">
-                      <h6>《作品名称》</h6>
-                      <p><span class="works-view"><i class="el-icon-view"></i>212</span><span class="works-edit"><i class="el-icon-edit-outline"></i>17</span></p>
-                   </div>
-               </div>
-               <div class="works-item">
-                   <img style="width: 100%" :src="require('assets/img/works_08.jpg')" alt="作品">
-                   <div class="works-desc">
-                      <h6>《作品名称》</h6>
-                      <p><span class="works-view"><i class="el-icon-view"></i>212</span><span class="works-edit"><i class="el-icon-edit-outline"></i>17</span></p>
-                   </div>
-               </div>
-               <div class="works-item">
-                   <img style="width: 100%" :src="require('assets/img/works_03.jpg')" alt="作品">
-                   <div class="works-desc">
-                      <h6>《作品名称》</h6>
-                      <p><span class="works-view"><i class="el-icon-view"></i>212</span><span class="works-edit"><i class="el-icon-edit-outline"></i>17</span></p>
-                   </div>
-               </div>
-               <div class="works-item">
-                   <img style="width: 100%" :src="require('assets/img/wokrs_06.jpg')" alt="作品">
-                   <div class="works-desc">
-                      <h6>《作品名称》</h6>
-                      <p><span class="works-view"><i class="el-icon-view"></i>212</span><span class="works-edit"><i class="el-icon-edit-outline"></i>17</span></p>
-                   </div>
-               </div>
-               <div class="works-item">
-                   <img style="width: 100%" :src="require('assets/img/works_03.jpg')" alt="作品">
-                   <div class="works-desc">
-                      <h6>《作品名称》</h6>
-                      <p><span class="works-view"><i class="el-icon-view"></i>212</span><span class="works-edit"><i class="el-icon-edit-outline"></i>17</span></p>
-                   </div>
-               </div>
+<template>
+    <div class="center">
+        <!-- <ul @click="handleTypeChange">
+            <li v-for="(item, index) in types" class="works-type" :class="{active: type == item}" :key="index">{{item}}</li>
+        </ul> -->
+        <el-menu
+            @select="handleTypeChange"
+            class="type-menu"
+        >
+            <el-menu-item
+                v-for="(item, index) in types"
+                :key="index"
+                :index="item"
+                class="works-type"
+                :class="{active: type == item}"
+            >
+            {{item}}
+            </el-menu-item>
+        </el-menu>
+        <div class="works-content">
+            <div class="works-item" v-for="(item, index) in data" :key="index" @click="handleWorkClick(item)">
+                <img style="width: 100%" :src="item.pic_url" alt="作品">
+                <div class="works-desc">
+                    <h6 style="word-break: break-all;">《{{item.work_title}}》</h6>
+                    <p><span class="works-view"><i class="el-icon-view"></i>{{item.view_count}}</span></p>
+                </div>
             </div>
-            <div class="page-wrapper works">
-                <el-pagination
-                    background=true
-                    layout="prev, pager, next"
-                    :total="199"
-                >
-                </el-pagination>
-            </div>
+        </div>
+        <div class="page-wrapper works">
+            <el-pagination
+                :background=true
+                layout="prev, pager, next"
+                :total="total"
+                :page-size="limit"
+                @current-change = "pageChange"
+            >
+            </el-pagination>
         </div>
     </div>
 </template>
 
 <script>
+import { work_select } from 'api/works'
 export default {
-  name: "WorksContent"
+    name: "WorksContent",
+    components: {
+    },
+    mounted() {
+        //首次请求数据
+        let type = this.$route.query.type
+        if (!type) {
+            this.$router.push(`/works?type=全部`)
+        }
+        this.pageChange.call(this, this.currentPage)
+    },
+    data() {
+        return {
+            // type: '全部', //作品类型
+            limit:9,  //每页显示数量
+            total:0,  //总数
+            currentPage:1, //当前页,
+            data: [], //作品数据,
+            types: ['全部', '长江三峡', '山水', '花鸟', '人物', '临摹对比']
+        }
+    },
+    methods: {
+        async pageChange(pageNum) {
+            this.currentPage = pageNum
+
+            let response
+            if (this.type === '全部' || (!this.type)) {
+                response = await work_select({limit:this.limit, currentPage:this.currentPage})
+            } else {
+                response = await work_select({limit:this.limit, currentPage:this.currentPage, type:this.type})
+            }
+            this.total = response.count;
+            this.data = response.list;
+        },
+        handleTypeChange(index) {
+            // let type = e.target.textContent
+            // this.type = type
+            this.$router.push(`/works?type=${index}`)
+            this.pageChange.call(this, this.currentPage)
+        },
+        handleWorkClick(item) {
+            this.$router.push(`/works/detail?id=${item.work_id}`)
+        }
+    },
+    computed: {
+        type() {
+            let type = decodeURIComponent(this.$route.query.type)
+            return type ? type : '全部'
+        }
+    }
 }
 </script>
 
 <style lang="less" scoped>
+    .type-menu {
+        background-color: transparent;
+    }
     .center {
         width: 1024px;
         margin: 0 auto;
@@ -181,15 +142,19 @@ export default {
         font-size: 18px;
         overflow: hidden;
         padding: 0;
-        &>li {
+        &>li.works-type {
             float: left;
-            width: 60px;
             height: 30px;
             line-height: 30px;
             border: solid 1px #b23e2f;
             color: #b23e2f;
             text-align: center;
-            &+li {
+            cursor: pointer;
+            &:hover {
+                background-color: #b23e2f;
+                color: #fff;
+            }
+            &+li.works-type {
                 margin-left: 15px;
             }
             &.active {
@@ -214,7 +179,12 @@ export default {
         margin-top: 8px;
         box-shadow: 0px 0px 10px #888888;
         display: inline-block;
+        // float: left;
         break-inside: avoid;
+        cursor: pointer;
+        &:hover {
+            box-shadow: 3px 3px 10px #888888;
+        } 
     }
     .works-desc {
         background-color: #fff;
