@@ -127,14 +127,8 @@ export default {
         value: '全部',
         label: '全部'
       }, {
-        value: '山水',
-        label: '山水'
-      }, {
-        value: '人物',
-        label: '人物'
-      }, {
-        value: '花鸟',
-        label: '花鸟'
+        value: '创作',
+        label: '创作'
       }, {
           value: "临摹对比",
           label: "临摹对比"

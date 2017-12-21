@@ -92,28 +92,20 @@ export default {
   data() {
     return {
       fileList: [], //回显用的
-      options: [
-        {
-          value: "山水",
-          label: "山水"
-        },
-        {
-          value: "人物",
-          label: "人物"
-        },
-        {
-          value: "花鸟",
-          label: "花鸟"
-        },
-        {
+       options: [{     //下拉选项
+        value: '全部',
+        label: '全部'
+      }, {
+        value: '创作',
+        label: '创作'
+      }, {
           value: "临摹对比",
           label: "临摹对比"
         },
         {
           value: "长江三峡",
           label: "长江三峡"
-        }
-      ],
+        }],
       work_id:0, //作品id
       value: "", //下拉
       radio: "否", //单选
