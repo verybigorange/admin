@@ -13,6 +13,15 @@ const webpack = require('webpack')
 const proxyMiddleware = require('http-proxy-middleware')
 const webpackConfig = require('./webpack.dev.conf')
 
+var vueServerRenderer = require('vue-server-renderer')
+var code = require(path.resolve(__dirname,'../dist/server.js')).default;
+
+console.log(code)
+const bundleRenderer = vueServerRenderer.createBundleRenderer(code);
+console.log(bundleRenderer)
+
+console.log(require("../dist/server"))
+
 // default port where dev server listens for incoming traffic
 const port = process.env.PORT || config.dev.port
 // automatically open browser, if not set will be false
