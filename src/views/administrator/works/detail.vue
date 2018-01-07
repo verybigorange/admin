@@ -118,9 +118,6 @@ export default {
     }
   }
 }
-
-.comment {
-}
 </style>
 
 
