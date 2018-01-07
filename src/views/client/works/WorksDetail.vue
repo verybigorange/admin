@@ -9,11 +9,13 @@
             
             <h5>《{{work_title}}》</h5>
             <p class="works-label clearfix">
-                <span class="view-num pull-left">浏览{{view_count}}次</span>
+                <span class="view-num">浏览{{view_count}}次</span>
                 <!-- <span class="comment-num pull-right"><i class="el-icon-edit-outline"></i>217</span> -->
             </p>
             <el-input type="textarea" v-model="txt" placeholder="120个字以内" :maxlength=120 :autosize="{ minRows: 2, maxRows: 4}"></el-input>
-            <span class="comment-btn" @click="commit">发表</span>
+            <div style="text-align:right;">
+                <span class="comment-btn" @click="commit">发表</span>
+            </div>
             <div style="clear:both;"></div>
             <div class="works-comments">
                 <div class="comment-item" v-for="(item,index) in tableData" :key="index">
@@ -238,6 +240,7 @@ export default {
     .view-num,.comment-num {
         color: #666;
         margin: 10px 20px;
+        display: inline-block;
     }
 
     .comment-text {
@@ -310,7 +313,7 @@ export default {
         text-align: center;
         letter-spacing: 5px;
         margin-top:20px; 
-        float: right;
+        display: inline-block;
         cursor: pointer;
     }
     
