@@ -32,9 +32,9 @@
         </div>
         <span class="close-modal" v-show="currentBigPic" @click="handleClose"><i class="el-icon-close"></i></span>
         <el-slider v-show="currentBigPic" :min="50" :max="500" class="work-zoom-slider" v-model="zoomValue" vertical height="300px" :show-tooltip="false"></el-slider>
-        <div class='big-pic' v-show='currentBigPic'>
-            <div class="img-contaier">
-                <img ref='img' :style="{width: $refs.img ? $refs.img.naturalWidth * zoomValue / 100 + 'px' : 'auto'}" :src="pic_url" alt="图片未加载成功">
+        <div @mousewheel="handleWheel" class='big-pic' v-show='currentBigPic'>
+            <div ref='imgContainer' @mouseup="handleUp" @mousedown="handleDown" @mousemove="handleMove" class="img-contaier" :style="{top: '50%',left: '50%'}">
+                <img ref='img' draggable="false" :style="{width: $refs.img ? $refs.img.naturalWidth * zoomValue / 100 + 'px' : 'auto'}" :src="pic_url" alt="图片未加载成功">
             </div>
         </div>
     </div>
@@ -60,7 +60,10 @@ export default {
       currentBigPic:false,
       txt:"", //评论内容
       zoomValue: 100,
-      convertUTCTimeToLocalTime:convertUTCTimeToLocalTime
+      convertUTCTimeToLocalTime:convertUTCTimeToLocalTime,
+      lastY: 0,
+      lastX: 0,
+      isDraging: false,
     };
   },
     async mounted(){
@@ -98,6 +101,37 @@ export default {
     handleClose() {
         this.zoomValue = 100;
         this.currentBigPic = false;
+    },
+    handleUp(e) {
+        this.isDraging = false
+        e.currentTarget.style.cursor = 'auto'
+    },
+    handleMove(e) {
+        if (!this.isDraging) {
+            return
+        }
+
+        let currentTarget = e.currentTarget
+        let left = parseInt(window.getComputedStyle(currentTarget).left)
+        let top = parseInt(window.getComputedStyle(currentTarget).top)
+        console.log(e.clientX)
+        console.log(e.clientY)
+        let deltaX =  e.clientX - this.lastX
+        let deltaY =  e.clientY - this.lastY
+        this.$refs.imgContainer.style.left = left + deltaX + 'px'
+        this.$refs.imgContainer.style.top = top + deltaY + 'px'
+        this.lastX = e.clientX
+        this.lastY = e.clientY
+    },
+    handleDown(e) {
+        this.lastX = e.clientX
+        this.lastY = e.clientY
+        this.isDraging = true
+        e.currentTarget.style.cursor = 'move'
+    },
+    handleWheel(e) {
+        this.zoomValue += e.wheelDelta / 12
+
     }
   }
 }
@@ -108,8 +142,6 @@ export default {
         overflow: scroll;
         &>.img-contaier {
             position: absolute;
-            top: 50%;
-            left: 50%;
             transform:translate(-50%,-50%);
         }
     }
