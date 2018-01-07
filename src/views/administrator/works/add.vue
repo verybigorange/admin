@@ -77,10 +77,7 @@ export default {
   data() {
     return {
       fileList: [], //回显用的
-       options: [{     //下拉选项
-        value: '全部',
-        label: '全部'
-      }, {
+       options: [{
         value: '创作',
         label: '创作'
       }, {
