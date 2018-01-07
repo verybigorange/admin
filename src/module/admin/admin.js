@@ -1,7 +1,7 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import App from '../../components/App'
+import Admin from '../../components/Admin'
 import  adminRouter  from '../../router/admin'
 import ElementUI from 'element-ui';
 import 'assets/css/common.css'
@@ -19,8 +19,8 @@ import '../../../static/UE/ueditor.parse.min.js';
 Vue.use(ElementUI);
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
+  el: '#admin',
   router: adminRouter,
-  template: '<App/>',
-  components: { App }
+  template: '<Admin/>',
+  components: { Admin }
 })

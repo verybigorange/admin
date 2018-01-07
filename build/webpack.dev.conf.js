@@ -64,7 +64,7 @@ for (var pathname in pages) {
     minify: { //传递 html-minifier 选项给 minify 输出
       removeComments: true
     },
-    inject: 'body', // js插入位置
+    inject: true, // js插入位置
     chunks: [pathname, "vendor", "manifest"] // 每个html引用的js模块，也可以在这里加上vendor等公用模块
   };
   // 需要生成几个html文件，就配置几个HtmlWebpackPlugin对象
