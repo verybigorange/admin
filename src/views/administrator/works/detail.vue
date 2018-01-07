@@ -118,6 +118,9 @@ export default {
     }
   }
 }
+
+.comment {
+}
 </style>
 
 

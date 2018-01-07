@@ -32,7 +32,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': { //在api路径下代理localhost:9000这个地址。
-        target: 'http://localhost:80/',
+        target: 'http://localhost:3000/',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
