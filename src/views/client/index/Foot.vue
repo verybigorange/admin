@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="copyright">
-             <small>Copyright©洪雅县笑勤文化交流有限公司 All Rights Reserved. 蜀ICP备1000000号-1000-028-3272</small>
+             <small>Copyright©洪雅县笑勤文化交流有限公司 All Rights Reserved. 蜀ICP备18002074号</small>
         </div>
         <a href="javascript:;" class="go-admin" @click="$router.push('/admin/home')">进入后台管理系统</a>
     </div>
