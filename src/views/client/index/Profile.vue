@@ -8,8 +8,8 @@
                     <img style="width: 100%" :src="require('assets/img/portrait.jpg')" alt="大师肖像">
                 </div>
                 <h5 class="name">何笑勤</h5>
-                <p class="profile-text">字默舟，生于一九五六年，四川洪雅人。中原书画院研究员，眉山地区美协会员。　八岁开始学画，早年曾受画坛前辈钱松岩、李琼玖等先生的指教。自学三十余年，深入传统的研修，并把现代精神与笔墨融合其中不断的求索，勤奋笔耕，力求突破与创新、自然与物象变与合的统一感悟、生化，其作品深得同行和前辈认可。</p>
-                <section class="qr-section">
+                <p class="profile-text">字默舟，生于一九五六年，四川洪雅人。中原书画院研究员，眉山地区美协会员。　八岁开始学画，早年曾受画坛前辈钱松岩、李琼玖等先生的指教。自学五十余年，深入传统的研修，并把现代精神与笔墨融合其中不断的求索，勤奋笔耕，力求突破与创新、自然与物象变与合的统一感悟、生化，其作品深得同行和前辈认可。</p>
+                <!-- <section class="qr-section">
                     <div class="qr-content pull-left">
                         <img style="width: 100%" :src="require('assets/img/qr_code.jpg')" alt="二维码">
                     </div>
@@ -18,7 +18,7 @@
                         </br>
                         <span>该艺术家微官网</span>
                     </div>
-                </section>
+                </section> -->
             </section>
             <section class="shows">
                 <el-carousel
@@ -216,7 +216,8 @@ export default {
         width: 260px;
         margin: 12px 10px 10px 5px;
         font-size: 14px;
-        line-height: 24px;
+        line-height: 28px;
+        text-indent: 2rem;
     }
 
     .qr-content {
