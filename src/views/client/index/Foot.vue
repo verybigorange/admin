@@ -8,7 +8,7 @@
         <div class="footer-content">
             <div class="links-l">
                 <span class="attention">关注</span>
-                <a class="attention-link" href="https://weibo.com/u/6410592208"><i class="weibo"></i></a>
+                <a class="attention-link" target="_blank" href="https://weibo.com/u/6465589904"><i class="weibo"></i></a>
                 <a class="attention-link" href=""><i class="qq"></i></a>
                 <a class="attention-link" href=""><i class="weixin"></i></a>
             </div>
